@@ -5,13 +5,19 @@ function Navbar() {
   const links = (
     <>
       <li>
-        <Link>Home</Link>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <Link>Meals</Link>
+        <NavLink to={"/meals"}>Meals</NavLink>
       </li>
       <li>
-        <Link>Upcoming Meals</Link>
+        <NavLink to={"/upcoming-meals"}>Upcoming Meals</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/user/login"}>Sing In</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/user/singUp"}>Sing Up</NavLink>
       </li>
     </>
   );
@@ -61,11 +67,16 @@ function Navbar() {
               tabIndex={0}
               className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
             >
-              <li className="disabled flex-grow border-b-2 flex justify-center items-center">
-                <a>Item 1</a>
+              <li className="disabled  active:bg-white border-b-2">
+                <button className="btn bg-transparent hover:bg-transparent shadow-none border-none font-semibold disabled">
+                  suvo datta
+                </button>
               </li>
               <li>
-                <a>Item 2</a>
+                <a>Dashboard</a>
+              </li>
+              <li>
+                <a>LogOut</a>
               </li>
             </ul>
           </div>

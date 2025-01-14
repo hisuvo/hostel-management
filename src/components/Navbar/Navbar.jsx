@@ -22,7 +22,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="backdrop-blur-sm bg-green-500/30  py-4 border-b-2 border-green-950 ">
+    <div className="backdrop-blur-sm bg-green-500/90  py-4 border-b-2 border-green-950 ">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">

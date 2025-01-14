@@ -2,7 +2,7 @@ import SectionTitle from "../../../shared/SectionTitle";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Container from "../../../shared/Container/Container";
-import MealCards from "../../../shared/MealCards/MealCards";
+import MealCards from "../../../components/MealCards/MealCards";
 
 function MealsTab() {
   return (

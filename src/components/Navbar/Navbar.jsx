@@ -22,7 +22,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="backdrop-blur-sm bg-green-500/30  py-4 border-b-2 border-green-500 ">
+    <div className="backdrop-blur-sm bg-green-500/30  py-4 border-b-2 border-green-950 ">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -49,7 +49,7 @@ function Navbar() {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Hostel M.</a>
+          <Link className="btn btn-ghost text-xl">Hostel M.</Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -58,7 +58,7 @@ function Navbar() {
 
         <div className="navbar-end">
           {!true ? (
-            <a className="btn">Join Us</a>
+            <Link className="btn">Join Us</Link>
           ) : (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn m-1">
@@ -74,10 +74,10 @@ function Navbar() {
                   </button>
                 </li>
                 <li>
-                  <a>Dashboard</a>
+                  <Link>Dashboard</Link>
                 </li>
                 <li>
-                  <a>LogOut</a>
+                  <Link>LogOut</Link>
                 </li>
               </ul>
             </div>

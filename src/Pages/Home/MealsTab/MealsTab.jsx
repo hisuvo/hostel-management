@@ -1,14 +1,40 @@
-import React from "react";
 import SectionTitle from "../../../shared/SectionTitle";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import Container from "../../../shared/Container/Container";
+import MealCards from "../../../shared/MealCards/MealCards";
 
 function MealsTab() {
   return (
-    <div>
+    <Container>
       <SectionTitle
         heading={"Meals Category"}
         subHeading={"check food and test"}
       />
-    </div>
+      <div className="my-12">
+        <Tabs>
+          <TabList>
+            <Tab>All Meals</Tab>
+            <Tab>Breakfast</Tab>
+            <Tab>Lunch</Tab>
+            <Tab>Dinner</Tab>
+          </TabList>
+
+          <TabPanel>
+            <MealCards />
+          </TabPanel>
+          <TabPanel>
+            <MealCards />
+          </TabPanel>
+          <TabPanel>
+            <MealCards />
+          </TabPanel>
+          <TabPanel>
+            <MealCards />
+          </TabPanel>
+        </Tabs>
+      </div>
+    </Container>
   );
 }
 

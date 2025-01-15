@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 function Navbar() {
   const { user, logOut } = useContext(AuthContext);
@@ -23,13 +24,25 @@ function Navbar() {
   // LogOut
   const handleLogOut = () => {
     logOut()
-      .then((res) => {
-        alert("LogOut done");
+      .then(() => {
+        Swal.fire({
+          position: "bottom-end",
+          icon: "success",
+          title: "Logout successfuly done",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/user/login");
       })
       .catch((error) => {
         if (error.code) {
-          console.log("logout error in navbar ---->", error.code);
+          Swal.fire({
+            position: "bottom-end",
+            icon: "error",
+            title: `${error.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };

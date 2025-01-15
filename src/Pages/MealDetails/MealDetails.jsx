@@ -16,24 +16,25 @@ function MealDetails() {
   }
 
   const meal = meals.filter((item) => item._id === id)[0];
-  const { title, rating, image, price, description, ingredients } = meal;
-
-  if (!meal) return <div>Loading...</div>;
 
   return (
     <Container>
       <div>
         <div className="flex gap-4">
           <figure className="w-1/2">
-            <img src="" alt={title} />
+            <img src="" alt={meal?.title} />
           </figure>
           <div className="space-y-2">
-            <h3 className="text-2xl font-semibold">{title}</h3>
+            <h3 className="text-2xl font-semibold">{meal?.title}</h3>
             <p className="text-lg">
-              <span className="font-semibold">Description</span>: {description}
+              <span className="font-semibold">Description</span>:{" "}
+              {meal?.description}
             </p>
-            <Rating style={{ maxWidth: 120 }} value={Math.floor(rating)} />
-            <p className="text-xl font-semibold">${price}</p>
+            <Rating
+              style={{ maxWidth: 120 }}
+              value={Math.floor(meal?.rating)}
+            />
+            <p className="text-xl font-semibold">${meal?.price}</p>
             <div className="space-x-2">
               <button className="btn">Like</button>
               <button className="btn">Mile Request</button>

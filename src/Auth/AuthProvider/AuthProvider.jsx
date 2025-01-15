@@ -63,6 +63,7 @@ function AuthProvider({ children }) {
 
   const userInfo = {
     user,
+    loading,
     createUser,
     logIn,
     updateUserProfile,

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
@@ -10,16 +10,31 @@ export default function Login() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const { logIn, googleSign } = useContext(AuthContext);
+  const location = useLocation();
+
+  const currentLocation = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     logIn(data.email, data.password)
       .then(() => {
-        alert("login success");
-        navigate("/");
+        Swal.fire({
+          position: "bottom-end",
+          icon: "success",
+          title: "login success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(currentLocation);
       })
       .catch((error) => {
         if (error.code) {
-          console.log(error.code);
+          Swal.fire({
+            position: "bottom-end",
+            icon: "error",
+            title: `${error.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
@@ -27,15 +42,21 @@ export default function Login() {
   const handleGoogleSign = () => {
     googleSign()
       .then((res) => {
-        Swal.fire("Google Login Done");
-        navigate("/");
+        Swal.fire({
+          position: "bottom-end",
+          icon: "success",
+          title: "login success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(currentLocation);
       })
       .catch((error) => {
         Swal.fire(error.message);
       });
   };
   return (
-    <div className="max-w-[25rem] mx-auto p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 ">
+    <div className="max-w-[25rem] mx-auto p-4 my-4 md:my-12 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 ">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <h5 className="text-xl font-medium text-gray-900 dark:text-white">
           Sign in to our platform

@@ -21,46 +21,45 @@ export default function SingUP() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const imageFile = { image: data.image[0] };
+    try {
+      const imageFile = { image: data.image[0] };
 
-    // post image and get image url
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
-    const imgUrl = res.data?.data?.display_url;
-
-    // signUp
-    createUser(data.email, data.password)
-      .then(() => {
-        updateUserProfile(data.name, imgUrl)
-          .then(() => {
-            navigate("/");
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Created accout successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          })
-          .catch((error) => {
-            console.log("update error -->", error.code);
-          });
-      })
-      .catch((error) => {
-        if (error.code) {
-          console.log("sing up error --->", error.code);
-        }
+      // Post image and get the image URL
+      const res = await axiosPublic.post(image_hosting_api, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
       });
 
-    const userData = {
-      name: data.name,
-      image: imgUrl,
-      email: data.email,
-      password: data.password,
-    };
+      const imgUrl = res.data?.data?.display_url;
+
+      // Create user
+      await createUser(data.email, data.password);
+
+      // Update user profile
+      await updateUserProfile(data.name, imgUrl);
+
+      // Show success message
+      Swal.fire({
+        position: "bottom-end",
+        icon: "success",
+        title: "Sign-up successful!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      // Navigate to another page after success
+      navigate("/");
+    } catch (error) {
+      // Handle errors and show error messages
+      Swal.fire({
+        position: "bottom-end",
+        icon: "error",
+        title: error.message || "Sign-up failed!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   const handleGoogleSign = () => {

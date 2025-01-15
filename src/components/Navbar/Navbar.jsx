@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
 
 function Navbar() {
-  const { user } = useContext(AuthContext);
-  console.log(user?.displayName);
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const links = (
     <>
@@ -17,14 +17,22 @@ function Navbar() {
       <li>
         <NavLink to={"/upcoming-meals"}>Upcoming Meals</NavLink>
       </li>
-      <li>
-        <NavLink to={"/user/login"}>Sing In</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/user/singUp"}>Sing Up</NavLink>
-      </li>
     </>
   );
+
+  // LogOut
+  const handleLogOut = () => {
+    logOut()
+      .then((res) => {
+        alert("LogOut done");
+        navigate("/user/login");
+      })
+      .catch((error) => {
+        if (error.code) {
+          console.log("logout error in navbar ---->", error.code);
+        }
+      });
+  };
   return (
     <div className="backdrop-blur-sm bg-green-200/30  py-2 border-b-2 border-green-500 ">
       <div className="navbar container mx-auto">
@@ -62,7 +70,10 @@ function Navbar() {
 
         <div className="navbar-end">
           {!user ? (
-            <Link className="btn bg-green-900 hover:bg-green-800 text-white">
+            <Link
+              to={"/user/login"}
+              className="btn bg-green-900 hover:bg-green-800 text-white"
+            >
               Join Us
             </Link>
           ) : (
@@ -70,7 +81,7 @@ function Navbar() {
               <div tabIndex={0} role="button">
                 <div className="avatar">
                   <div className="w-12 rounded-full">
-                    <img src={user?.photoURL} />
+                    <img referrerPolicy="no-referrer" src={user?.photoURL} />
                   </div>
                 </div>
               </div>
@@ -86,7 +97,7 @@ function Navbar() {
                 <li>
                   <Link>Dashboard</Link>
                 </li>
-                <li>
+                <li onClick={handleLogOut}>
                   <Link>LogOut</Link>
                 </li>
               </ul>

@@ -3,13 +3,17 @@ import app from "../../firebase/firebase.config";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -27,6 +31,18 @@ function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // signOut function
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
+  // singIn with goole
+  const googleSign = () => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
+
   // Update profile
   const updateUserProfile = (name, url) => {
     updateProfile(auth.currentUser, {
@@ -39,14 +55,20 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("Current user is ---->", currentUser);
-
+      // console.log("Current user is ---->", currentUser);
       setLoading(false);
     });
     return () => unSubscribe();
   }, []);
 
-  const userInfo = { user, createUser, logIn, updateUserProfile };
+  const userInfo = {
+    user,
+    createUser,
+    logIn,
+    updateUserProfile,
+    logOut,
+    googleSign,
+  };
 
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

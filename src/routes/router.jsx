@@ -28,11 +28,11 @@ const router = createBrowserRouter([
         path: "/upcoming-meals",
         element: <UpcomingMeals />,
       },
-      {
-        path: "user/login",
-        element: <Login />,
-      },
     ],
+  },
+  {
+    path: "user/login",
+    element: <Login />,
   },
   {
     path: "user/singUp",

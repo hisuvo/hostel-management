@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublice from "../../Hooks/useAxiosPublice";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
@@ -11,7 +12,8 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
 export default function SingUP() {
   const [showPassword, setShowPassword] = useState(true);
   const axiosPublic = useAxiosPublice();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleSign } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -33,15 +35,24 @@ export default function SingUP() {
     createUser(data.email, data.password)
       .then(() => {
         updateUserProfile(data.name, imgUrl)
-          .then((res) => {
-            console.log(res);
+          .then(() => {
+            navigate("/");
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Created accout successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           })
           .catch((error) => {
             console.log("update error -->", error.code);
           });
       })
       .catch((error) => {
-        console.log("sing up error --->", error.code);
+        if (error.code) {
+          console.log("sing up error --->", error.code);
+        }
       });
 
     const userData = {
@@ -50,8 +61,18 @@ export default function SingUP() {
       email: data.email,
       password: data.password,
     };
+  };
 
-    console.log("user data info --->", userData);
+  const handleGoogleSign = () => {
+    // googleSignIn
+    googleSign()
+      .then((result) => {
+        Swal.fire("Google Login Done");
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire(error.message);
+      });
   };
 
   return (
@@ -152,6 +173,7 @@ export default function SingUP() {
           >
             Login to your account
           </button>
+
           <div className="text-sm text-center font-medium text-gray-500 dark:text-gray-300">
             Already have an Acount?{" "}
             <Link
@@ -162,16 +184,20 @@ export default function SingUP() {
             </Link>
           </div>
         </form>
+
         {/* show password btn */}
-        <button
-          onClick={() => setShowPassword((view) => !view)}
-          className="btn btn-xs absolute right-10 bottom-[18.5rem]"
-        >
-          {showPassword ? <FaEye /> : <FaEyeSlash />}
-        </button>
+        <div className="relative">
+          <button
+            onClick={() => setShowPassword((view) => !view)}
+            className="btn btn-xs absolute right-1 -mt-[8.8rem]"
+          >
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
+          </button>
+        </div>
         <div className="divider"></div>
         {/* social login */}
         <button
+          onClick={handleGoogleSign}
           type="button"
           className="w-full  text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex justify-center gap-4  items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2"
         >

@@ -156,14 +156,32 @@ export default function SingUP() {
               type={showPassword ? "password" : "text"}
               name="password"
               id="password"
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: true,
+                minLength: 6,
+                maxLength: 20,
+                pattern:
+                  /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+              })}
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             />
             {errors.password?.type === "required" && (
-              <p role="alert" className="text-xs text-red-600">
-                Name is required
-              </p>
+              <span className="text-red-500">Password field is required</span>
+            )}
+            {errors.password?.type === "minLength" && (
+              <span className="text-red-500">Password must be 6 character</span>
+            )}
+            {errors.password?.type === "maxLength" && (
+              <span className="text-red-500">
+                Password must be less than 10 character
+              </span>
+            )}
+            {errors.password?.type === "pattern" && (
+              <span className="text-red-500">
+                Password must be on uppercase one lowercase and one special
+                character
+              </span>
             )}
           </div>
 

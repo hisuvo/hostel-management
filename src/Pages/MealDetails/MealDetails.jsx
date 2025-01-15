@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import useMeal from "../../Hooks/useMeal";
 import Container from "../../shared/Container/Container";
 import { Rating } from "@smastrom/react-rating";
+import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
+import Lodder from "../../components/Lodder/Lodder";
 
 function MealDetails() {
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
   const [meals] = useMeal();
+
+  if (!user) {
+    return <Lodder />;
+  }
 
   const meal = meals.filter((item) => item._id === id)[0];
   const { title, rating, image, price, description, ingredients } = meal;

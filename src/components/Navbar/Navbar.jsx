@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
 
 function Navbar() {
+  const { user } = useContext(AuthContext);
+  console.log(user?.displayName);
+
   const links = (
     <>
       <li>
@@ -22,7 +26,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="backdrop-blur-sm bg-green-500/90  py-4 border-b-2 border-green-950 ">
+    <div className="backdrop-blur-sm bg-green-200/30  py-2 border-b-2 border-green-500 ">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -57,12 +61,18 @@ function Navbar() {
         </div>
 
         <div className="navbar-end">
-          {!true ? (
-            <Link className="btn">Join Us</Link>
+          {!user ? (
+            <Link className="btn bg-green-900 hover:bg-green-800 text-white">
+              Join Us
+            </Link>
           ) : (
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn m-1">
-                Click
+              <div tabIndex={0} role="button">
+                <div className="avatar">
+                  <div className="w-12 rounded-full">
+                    <img src={user?.photoURL} />
+                  </div>
+                </div>
               </div>
               <ul
                 tabIndex={0}
@@ -70,7 +80,7 @@ function Navbar() {
               >
                 <li className="disabled  active:bg-white border-b-2">
                   <button className="btn bg-transparent hover:bg-transparent shadow-none border-none text-lg font-semibold disabled">
-                    suvo datta
+                    {user?.displayName}
                   </button>
                 </li>
                 <li>

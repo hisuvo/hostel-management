@@ -9,3 +9,5 @@
 # NPM Package here
 
 - react-tabs
+- react-rating
+- react-hook-form

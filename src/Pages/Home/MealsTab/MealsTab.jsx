@@ -3,8 +3,17 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Container from "../../../shared/Container/Container";
 import MealCards from "../../../components/MealCards/MealCards";
+import useMeal from "../../../Hooks/useMeal";
+import { useState } from "react";
 
 function MealsTab() {
+  const [tabIndex, setTabIndex] = useState(2);
+  const mealCategory = ["Breakfast", "lunch", "dinner"];
+  const [meals] = useMeal();
+  const breakfast = meals.filter((item) => item.category === "Breakfast");
+  const lunch = meals.filter((item) => item.category === "Lunch");
+  const dinner = meals.filter((item) => item.category === "Dinner");
+
   return (
     <Container>
       <SectionTitle
@@ -12,7 +21,7 @@ function MealsTab() {
         subHeading={"check food and test"}
       />
       <div className="my-12">
-        <Tabs>
+        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>All Meals</Tab>
             <Tab>Breakfast</Tab>
@@ -21,16 +30,16 @@ function MealsTab() {
           </TabList>
 
           <TabPanel>
-            <MealCards />
+            <MealCards items={meals} />
           </TabPanel>
           <TabPanel>
-            <MealCards />
+            <MealCards items={breakfast} />
           </TabPanel>
           <TabPanel>
-            <MealCards />
+            <MealCards items={lunch} />
           </TabPanel>
           <TabPanel>
-            <MealCards />
+            <MealCards items={dinner} />
           </TabPanel>
         </Tabs>
       </div>

@@ -1,11 +1,9 @@
-import useMeal from "../../Hooks/useMeal";
 import MealCard from "../../shared/MealCard/MealCard";
 
-function MealCards() {
-  const [meals] = useMeal();
+function MealCards({ items }) {
   return (
     <div className="grid grid-cols-3 gap-4">
-      {meals.map((meal) => (
+      {items.map((meal) => (
         <MealCard key={meal._id} meal={meal} />
       ))}
     </div>

@@ -13,3 +13,5 @@
 - react-hook-form
 - sweetalert2
 - react-icon
+
+NOTE: user for use image url https://i.pravatar.cc/300

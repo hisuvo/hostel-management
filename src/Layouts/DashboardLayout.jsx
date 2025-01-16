@@ -2,7 +2,7 @@ import { FaAlignLeft } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 // TODO: it user for test. End of the test delete isAdim variable
-const isAdmin = false;
+const isAdmin = true;
 
 const DashboardLayout = () => {
   return (
@@ -29,7 +29,7 @@ const DashboardLayout = () => {
             className="drawer-overlay"
           ></label>
 
-          <div className="flex flex-col bg-blue-100 text-blue-950 min-h-full w-[17rem] p-4">
+          <div className="flex flex-col bg-blue-900 text-white min-h-full w-[17rem] p-4">
             <div className="mb-4 lg:mb-8">
               <h2 className="text-2xl lg:text-3xl uppercase font-bold text-center">
                 Hostel M.
@@ -85,15 +85,14 @@ const DashboardLayout = () => {
                 )}
                 <div className="divider"></div>
                 <ul>
-                  {/* Sidebar content here */}
                   <li>
                     <NavLink to={"/"}>Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to={"meala"}>Meals</NavLink>
+                    <NavLink to={"/meals"}>Meals</NavLink>
                   </li>
                   <li>
-                    <NavLink to={"upcomming-meal"}>Upcomming Meals</NavLink>
+                    <NavLink to={"/upcoming-meals"}>Upcomming Meals</NavLink>
                   </li>
                 </ul>
               </div>

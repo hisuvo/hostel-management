@@ -1,4 +1,3 @@
-import { FaEye } from "react-icons/fa";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 
 const AllReview = () => {

@@ -11,7 +11,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import UserProfile from "../Pages/Dashboard/NormalUser/UserProfile";
 import RequestedMeals from "../Pages/Dashboard/NormalUser/RequestedMeals";
 import UserReviews from "../Pages/Dashboard/NormalUser/UserReviews";
-import PaymentHostory from "../Pages/Dashboard/NormalUser/PaymentHostory";
+import PaymentHistory from "../Pages/Dashboard/NormalUser/PaymentHistory";
 import AddMealForm from "../Pages/Dashboard/Admin/AddMeal";
 import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile";
 import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       },
       {
         path: "user-payment-history",
-        element: <PaymentHostory />,
+        element: <PaymentHistory />,
       },
       // admin infor
       {

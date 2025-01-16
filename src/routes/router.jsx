@@ -19,11 +19,13 @@ import AllMealTable from "../Pages/Dashboard/Admin/AllMealTable";
 import AllReview from "../Pages/Dashboard/Admin/AllReview";
 import ServeMeal from "../Pages/Dashboard/Admin/ServeMeal";
 import UpcammingMeal from "../Pages/Dashboard/Admin/UpcammingMeal";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -62,6 +64,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
+    // errorElement: <ErrorPage />,
     children: [
       // normal user
       {

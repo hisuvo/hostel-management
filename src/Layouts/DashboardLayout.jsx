@@ -2,7 +2,7 @@ import { FaAlignLeft } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 // TODO: it user for test. End of the test delete isAdim variable
-const isAdmin = true;
+const isAdmin = false;
 
 const DashboardLayout = () => {
   return (

@@ -5,6 +5,8 @@ import Container from "../../shared/Container/Container";
 import { Rating } from "@smastrom/react-rating";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
 import Lodder from "../../components/Lodder/Lodder";
+import PrimayBtn from "../../shared/Buttons/PrimayBtn";
+import { SlLike } from "react-icons/sl";
 
 function MealDetails() {
   const { user } = useContext(AuthContext);
@@ -36,8 +38,8 @@ function MealDetails() {
             />
             <p className="text-xl font-semibold">${meal?.price}</p>
             <div className="space-x-2">
-              <button className="btn">Like</button>
-              <button className="btn">Mile Request</button>
+              <PrimayBtn title={<SlLike />} />
+              <PrimayBtn title={"Mile Request"} />
             </div>
           </div>
         </div>
@@ -52,11 +54,8 @@ function MealDetails() {
               className="rounded w-full p-2 border"
               rows={"3"}
             ></textarea>
-            <button
-              type="submit"
-              className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Submit Review
+            <button type="submit">
+              <PrimayBtn title={"Submit Review"} />
             </button>
           </form>
           {/* TODO: Review text and user name here */}

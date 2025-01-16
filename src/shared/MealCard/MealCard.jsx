@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import PrimayBtn from "../Buttons/PrimayBtn";
 
 function MealCard({ meal }) {
   const { _id, title, image, rating, price } = meal;
@@ -32,11 +33,8 @@ function MealCard({ meal }) {
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
             ${price}
           </span>
-          <Link
-            to={`/meal-details/${_id}`}
-            className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Show Details
+          <Link to={`/meal-details/${_id}`}>
+            <PrimayBtn title={" Show Details"} />
           </Link>
         </div>
       </div>

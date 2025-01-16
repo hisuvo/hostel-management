@@ -108,7 +108,7 @@ function Navbar() {
                   </button>
                 </li>
                 <li>
-                  <Link>Dashboard</Link>
+                  <Link to={"/dashboard"}>Dashboard</Link>
                 </li>
                 <li onClick={handleLogOut}>
                   <Link>LogOut</Link>

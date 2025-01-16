@@ -11,3 +11,5 @@
 - react-tabs
 - react-rating
 - react-hook-form
+- sweetalert2
+- react-icon

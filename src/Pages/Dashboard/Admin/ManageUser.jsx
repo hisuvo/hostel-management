@@ -1,20 +1,37 @@
-import { FaSearch } from "react-icons/fa";
+import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useUser from "../../../Hooks/useUser";
 
 const ManageUser = () => {
+  const [searchQuery, setSearchQuery] = useState();
+  // const [users] = useUser();
   const axiosSecure = useAxiosSecure();
-  const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+
+  const {
+    isPending,
+    isLoading,
+    error,
+    data: users = [],
+    refetch,
+  } = useQuery({
+    queryKey: ["user", searchQuery],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
-      return res.data;
+      if (searchQuery) {
+        const res = await axiosSecure.get(
+          `/users?name=${searchQuery}&email=${searchQuery}`
+        );
+        return res.data;
+      } else {
+        const res = await axiosSecure.get(`/users`);
+        return res.data;
+      }
     },
+    enabled: !searchQuery,
   });
 
-  // console.log(users);
   // handle make admin
   const handleMakeAdmine = (user) => {
     Swal.fire({
@@ -28,7 +45,6 @@ const ManageUser = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
-          console.log(res.data);
           if (res.data?.modifiedCount > 0) {
             refetch();
             Swal.fire({
@@ -42,20 +58,32 @@ const ManageUser = () => {
     });
   };
 
+  const handleSearch = () => {
+    refetch();
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">All Users {users.length}</h2>
 
       {/* Search Bar */}
-      <div className="form-control mb-6 max-w-md">
-        <label className="input input-bordered flex items-center gap-2">
-          <input
-            type="text"
-            className="grow"
-            placeholder="by username and email"
-          />
-          <FaSearch />
-        </label>
+      <div className="bg-blue-100 p-4 rounded-md">
+        <div className="form-control  max-w-md">
+          <div className="input-group flex gap-2">
+            <input
+              type="text"
+              placeholder="Search by username or email"
+              className="input input-bordered w-full"
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button
+              className="btn bg-blue-700 hover:bg-blue-800 text-white"
+              onClick={handleSearch}
+            >
+              Search
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Table */}

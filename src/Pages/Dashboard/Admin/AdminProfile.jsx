@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
+import useUser from "../../../Hooks/useUser";
 
 export default function AdminProfile() {
   const { user } = useContext(AuthContext);
+  const [users] = useUser();
   const admin = {
     name: user?.displayName,
     image: user?.photoURL, // Replace with actual image URL
     email: user?.email,
     mealsAdded: 10,
   };
+
+  console.log(users);
 
   return (
     <div className="max-w-2xl mx-auto mt-6 bg-white shadow-lg rounded-lg overflow-hidden">

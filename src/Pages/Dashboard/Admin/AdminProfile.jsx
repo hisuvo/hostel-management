@@ -12,7 +12,7 @@ export default function AdminProfile() {
     mealsAdded: 10,
   };
 
-  console.log(users);
+  // console.log(users);
 
   return (
     <div className="max-w-2xl mx-auto mt-6 bg-white shadow-lg rounded-lg overflow-hidden">

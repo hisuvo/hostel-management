@@ -1,10 +1,12 @@
 import { FaAlignLeft } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
-
-// TODO: it user for test. End of the test delete isAdim variable
-const isAdmin = true;
+import useAdmin from "../Hooks/useAdmin";
 
 const DashboardLayout = () => {
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
+
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -41,7 +43,7 @@ const DashboardLayout = () => {
             {/* menu section */}
             <div className="flex-grow">
               <div className="menu">
-                {isAdmin === true ? (
+                {isAdmin ? (
                   <ul>
                     {/* Admin content here */}
                     <li>

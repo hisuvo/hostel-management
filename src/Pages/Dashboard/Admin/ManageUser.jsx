@@ -1,22 +1,13 @@
 import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import useUser from "../../../Hooks/useUser";
 
 const ManageUser = () => {
   const [searchQuery, setSearchQuery] = useState();
-  // const [users] = useUser();
   const axiosSecure = useAxiosSecure();
 
-  const {
-    isPending,
-    isLoading,
-    error,
-    data: users = [],
-    refetch,
-  } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["user", searchQuery],
     queryFn: async () => {
       if (searchQuery) {
@@ -29,7 +20,7 @@ const ManageUser = () => {
         return res.data;
       }
     },
-    enabled: !searchQuery,
+    enabled: true,
   });
 
   // handle make admin

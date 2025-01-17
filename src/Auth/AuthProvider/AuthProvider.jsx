@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import useAxiosPublice from "../../Hooks/useAxiosPublice";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -18,6 +19,7 @@ const provider = new GoogleAuthProvider();
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublice = useAxiosPublice();
 
   // signUP function
   const createUser = (email, password) => {
@@ -53,13 +55,26 @@ function AuthProvider({ children }) {
 
   // observer function
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      // console.log("Current user is ---->", currentUser);
-      setLoading(false);
+      if (currentUser) {
+        const userInfo = { email: currentUser.email };
+        // get token form server
+        await axiosPublice.post("/jwt", userInfo).then((res) => {
+          // set token in local stroge
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+            setLoading(false);
+          }
+        });
+      } else {
+        // remove token from localStroge
+        localStorage.removeItem("access-token");
+      }
+      // setLoading(false);
     });
     return () => unSubscribe();
-  }, []);
+  }, [axiosPublice]);
 
   const userInfo = {
     user,

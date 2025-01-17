@@ -13,5 +13,10 @@
 - react-hook-form
 - sweetalert2
 - react-icon
+- react-awesome-button
 
 NOTE: user for use image url https://i.pravatar.cc/300
+
+<!-- Done Page  -->
+
+6. join use page (login/register)

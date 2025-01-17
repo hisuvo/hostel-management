@@ -20,6 +20,7 @@ import AllReview from "../Pages/Dashboard/Admin/AllReview";
 import ServeMeal from "../Pages/Dashboard/Admin/ServeMeal";
 import UpcammingMeal from "../Pages/Dashboard/Admin/UpcammingMeal";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import CheckOut from "../Pages/CheckOut/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/upcoming-meals",
         element: <UpcomingMeals />,
+      },
+      {
+        path: `/checkout/:planName`,
+        element: <CheckOut />,
       },
     ],
   },

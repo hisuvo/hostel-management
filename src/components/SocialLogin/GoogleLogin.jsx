@@ -19,6 +19,7 @@ function GoogleLogin() {
           name: res.user?.displayName,
           email: res.user?.email,
           img: res.user?.photoURL,
+          badge: "bronze",
         };
 
         axiosPublic.post("/users", userInfo).then(() => {

@@ -1,5 +1,5 @@
 import { FaAlignLeft } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 // TODO: it user for test. End of the test delete isAdim variable
 const isAdmin = false;
@@ -31,9 +31,11 @@ const DashboardLayout = () => {
 
           <div className="flex flex-col bg-blue-900 text-white min-h-full w-[17rem] p-4">
             <div className="mb-4 lg:mb-8">
-              <h2 className="text-2xl lg:text-3xl uppercase font-bold text-center">
-                Hostel M.
-              </h2>
+              <Link to={"/"}>
+                <h2 className="text-2xl lg:text-3xl uppercase font-bold text-center">
+                  Hostel M.
+                </h2>
+              </Link>
             </div>
 
             {/* menu section */}
@@ -98,11 +100,11 @@ const DashboardLayout = () => {
               </div>
             </div>
 
-            {/* setting section */}
+            {/* About me section */}
             <div className="menu">
               <ul>
                 <li>
-                  <NavLink to={"setting"}>Setting</NavLink>
+                  <NavLink to={"about-me"}>About Me</NavLink>
                 </li>
               </ul>
             </div>

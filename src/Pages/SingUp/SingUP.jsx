@@ -38,26 +38,30 @@ export default function SingUP() {
         name: data.name,
         email: data.email,
         img: imgUrl,
+        badge: "bronze",
       };
 
       // Create user
       await createUser(data.email, data.password);
+      console.log("create User --");
 
       // Update user profile
       await updateUserProfile(data.name, imgUrl);
 
-      // Collect user data in DB
-      await axiosPublic
-        .post("/users", userData)
+      console.log("update user --");
 
-        // Show success message
-        .Swal.fire({
-          position: "bottom-end",
-          icon: "success",
-          title: "Sign-up successful!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+      // Collect user data in DB
+      await axiosPublic.post("/users", userData);
+      console.log("posrt user info in db");
+
+      // Show success message
+      Swal.fire({
+        position: "bottom-end",
+        icon: "success",
+        title: "Sign-up successful!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
 
       // Navigate to another page after success
       navigate("/");

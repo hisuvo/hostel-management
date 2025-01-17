@@ -2,7 +2,7 @@ import { FaAlignLeft } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 // TODO: it user for test. End of the test delete isAdim variable
-const isAdmin = false;
+const isAdmin = true;
 
 const DashboardLayout = () => {
   return (
@@ -45,10 +45,10 @@ const DashboardLayout = () => {
                   <ul>
                     {/* Admin content here */}
                     <li>
-                      <NavLink to={"admin-profile"}>Admin-profile</NavLink>
+                      <NavLink to={"admin-profile"}>Admin Home</NavLink>
                     </li>
                     <li>
-                      <NavLink to={"manage-users"}>Manage Users</NavLink>
+                      <NavLink to={"manage-users"}>All Users (manage)</NavLink>
                     </li>
                     <li>
                       <NavLink to={"add-meal"}>Add Meal</NavLink>

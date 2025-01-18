@@ -54,7 +54,11 @@ const router = createBrowserRouter([
       },
       {
         path: `/checkout/:planName`,
-        element: <CheckOut />,
+        element: (
+          <PrivateRoute>
+            <CheckOut />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -69,7 +73,6 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
-    // errorElement: <ErrorPage />,
     children: [
       // normal user
       {

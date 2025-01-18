@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import SectionTitle from "../../../shared/SectionTitle";
 import useAxiosPublice from "../../../Hooks/useAxiosPublice";
 import PlanCard from "../../../components/PlanCard/PlanCard";
+import { useQuery } from "@tanstack/react-query";
 
 function MembershipCards() {
   const axiosPublice = useAxiosPublice();
-  const [plans, setPlans] = useState();
 
-  useEffect(() => {
-    axiosPublice.get("/plans").then((res) => {
-      setPlans(res.data);
-    });
-  }, [axiosPublice]);
+  // memberShip plans data
+  const { data: plans = [] } = useQuery({
+    queryKey: ["plans"],
+    queryFn: async () => {
+      const res = await axiosPublice.get("/plans");
+      return res.data;
+    },
+  });
 
   return (
     <div>

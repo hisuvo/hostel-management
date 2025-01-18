@@ -14,9 +14,21 @@
 - sweetalert2
 - react-icon
 - react-awesome-button
+- react-stripe-js
 
 NOTE: user for use image url https://i.pravatar.cc/300
 
 <!-- Done Page  -->
 
+1. Home Page:
+
+- Navbar
+-
+- Meals by Category
+-
+-
+
 6. join use page (login/register)
+7. Admin Dashboard
+
+- Manage Users

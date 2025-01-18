@@ -5,10 +5,11 @@ import Container from "../../../shared/Container/Container";
 import MealCards from "../../../components/MealCards/MealCards";
 import useMeal from "../../../Hooks/useMeal";
 import { useState } from "react";
+import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
+import { Link } from "react-router-dom";
 
 function MealsTab() {
   const [tabIndex, setTabIndex] = useState(2);
-  const mealCategory = ["Breakfast", "lunch", "dinner"];
   const [meals] = useMeal();
   const breakfast = meals.filter((item) => item.category === "Breakfast");
   const lunch = meals.filter((item) => item.category === "Lunch");
@@ -43,6 +44,9 @@ function MealsTab() {
           </TabPanel>
         </Tabs>
       </div>
+      <Link to={"/meals"}>
+        <PrimayBtn title={"Show All Meal"} />
+      </Link>
     </Container>
   );
 }

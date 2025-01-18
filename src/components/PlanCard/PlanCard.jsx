@@ -4,7 +4,11 @@ function PlanCard({ plan }) {
   return (
     <div>
       <div
-        className={`card ${plan.color.background} ${plan.color.text}  shadow-lg p-6 rounded-lg`}
+        className={`card 
+          ${plan.name === "Silver Plan" ? "bg-gray-500 text-white" : ""}
+          ${plan.name === "Gold Plan" ? "bg-yellow-500 text-white" : ""}
+          ${plan.name === "Platinum Plan" ? "bg-blue-950 text-white" : ""}
+            shadow-lg p-6 rounded-lg`}
       >
         <h3 className="text-2xl font-bold text-center mb-4">{plan.name}</h3>
         <p className="text-xl font-semibold text-center mb-4">

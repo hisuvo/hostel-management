@@ -32,10 +32,8 @@ function useAxiosSecure() {
     async (error) => {
       const status = error?.request?.status;
       if (status === 401) {
-        // useEffect(async () => {
         await logOut();
         navigate("/user/login");
-        // }, [navigate]);
       }
       return Promise.reject(error);
     }

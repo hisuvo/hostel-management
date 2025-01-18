@@ -7,13 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 export default function AdminProfile() {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const [users] = useUser();
-  const admin = {
-    name: user?.displayName,
-    image: user?.photoURL, // Replace with actual image URL
-    email: user?.email,
-    mealsAdded: 10,
-  };
 
   // Admin how maney meal added check form server
   const { data: addMeals = [] } = useQuery({

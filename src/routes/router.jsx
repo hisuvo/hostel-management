@@ -21,6 +21,7 @@ import ServeMeal from "../Pages/Dashboard/Admin/ServeMeal";
 import UpcammingMeal from "../Pages/Dashboard/Admin/UpcammingMeal";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CheckOut from "../Pages/CheckOut/CheckOut";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -94,15 +95,34 @@ const router = createBrowserRouter([
       // admin infor
       {
         path: "admin-profile",
-        element: <AdminProfile />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AdminProfile />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "manage-users",
-        element: <ManageUser />,
+
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageUser />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "add-meal",
-        element: <AddMealForm />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddMealForm />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "all-meal-table",

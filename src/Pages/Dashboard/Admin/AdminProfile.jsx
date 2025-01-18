@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
 import useUser from "../../../Hooks/useUser";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 export default function AdminProfile() {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const [users] = useUser();
   const admin = {
     name: user?.displayName,
@@ -12,7 +15,18 @@ export default function AdminProfile() {
     mealsAdded: 10,
   };
 
-  // console.log(users);
+  // Admin how maney meal added check form server
+  const { data: addMeals = [] } = useQuery({
+    queryKey: ["addMeals"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(
+        `/destributer-add-meals/${user?.email}`
+      );
+      return res.data;
+    },
+  });
+
+  console.log(addMeals);
 
   return (
     <div className="max-w-2xl mx-auto mt-6 bg-white shadow-lg rounded-lg overflow-hidden">
@@ -33,24 +47,27 @@ export default function AdminProfile() {
         </svg>
         <h1 className="mx-3 text-white font-semibold text-lg">Admin Profile</h1>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center">
         <div className="flex items-center px-6 py-4">
           <img
             className="h-16 w-16 rounded-full object-cover border-2 border-green-900"
-            src={admin.image}
-            alt={admin.name}
+            src={user?.photoURL}
+            alt={user?.displayName}
           />
           <div className="mx-4">
             <h2 className="text-gray-800 font-semibold text-xl">
-              {admin.name}
+              {user?.displayName}
             </h2>
-            <p className="text-gray-600">{admin.email}</p>
+            <p className="text-gray-600">{user?.email}</p>
           </div>
         </div>
         <div className="px-6 py-4">
           <h3 className="text-gray-800 font-semibold text-lg mb-2">Stats</h3>
           <p className="text-gray-600">
-            <span className="font-bold">{admin.mealsAdded}</span> meals added
+            <span className="font-bold text-4xl text-blue-900">
+              {addMeals.length}
+            </span>{" "}
+            meals added
           </p>
         </div>
       </div>

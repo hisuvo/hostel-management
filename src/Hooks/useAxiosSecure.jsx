@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthProvider/AuthProvider";
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:7000",
+  baseURL: "https://hotsel-management-server.vercel.app",
 });
 function useAxiosSecure() {
   const { logOut } = useContext(AuthContext);

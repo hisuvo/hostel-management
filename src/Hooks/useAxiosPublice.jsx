@@ -1,6 +1,6 @@
 import axios from "axios";
 const axiosPublice = axios.create({
-  baseURL: "http://localhost:7000",
+  baseURL: "https://hotsel-management-server.vercel.app",
 });
 
 function useAxiosPublice() {

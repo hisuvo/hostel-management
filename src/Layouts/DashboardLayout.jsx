@@ -3,9 +3,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 
 const DashboardLayout = () => {
-  // const isAdmin = true;
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
 
   return (
     <div>

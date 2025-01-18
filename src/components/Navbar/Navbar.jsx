@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin";
 
 function Navbar() {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isAdmin] = useAdmin();
 
   const links = (
     <>
@@ -108,7 +110,13 @@ function Navbar() {
                   </button>
                 </li>
                 <li>
-                  <Link to={"/dashboard/user-profile"}>Dashboard</Link>
+                  <Link
+                    to={`/dashboard/${
+                      isAdmin ? "admin-profile" : "user-profile"
+                    }`}
+                  >
+                    Dashboard
+                  </Link>
                 </li>
                 <li onClick={handleLogOut}>
                   <Link>LogOut</Link>

@@ -28,6 +28,7 @@ NOTE: user for use image url https://i.pravatar.cc/300
 -
 -
 
+5. Checkout Page (Private Route)
 6. join use page (login/register)
 7. Admin Dashboard
 

@@ -71,25 +71,35 @@ const CheckOutForm = ({ price, planName }) => {
       });
     } else {
       if (paymentIntent.status === "succeeded") {
-        Swal.fire({
-          icon: "success",
-          title: `${user.displayName}`,
-          text: "You payment is done",
-        });
         setTransctionId(paymentIntent?.id);
 
-        const payments = {
+        const paymentsInfo = {
           userEmail: user?.email,
           planName: planName,
           transctionId: paymentIntent?.id,
         };
 
-        console.log(payments);
+        // store payments infon in database
+        await axiosSecure.post("/payments", paymentsInfo).then((res) => {
+          // console.log("payment infor store in database", res.data);
+
+          if (res.data.acknowledged) {
+            Swal.fire({
+              icon: "success",
+              title: `${user.displayName}`,
+              text: "You payment is done",
+            });
+          }
+        });
+
+        await axiosSecure
+          .patch(`/users/${user.email}`, { badge: planName })
+          .then((res) => {
+            console.log(res.data);
+          });
       }
     }
   };
-
-  console.log(transctionId);
 
   return (
     <form onSubmit={handleSubmit}>

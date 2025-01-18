@@ -22,9 +22,9 @@ function MealDetails() {
   return (
     <Container>
       <div>
-        <div className="flex gap-4">
-          <figure className="w-1/2">
-            <img src="" alt={meal?.title} />
+        <div className="flex flex-col md:flex-row gap-4 p-8 bg-blue-50">
+          <figure className="flex justify-center items-center gap-4">
+            <img className="md:w-[20rem]" src={meal?.image} alt={meal?.title} />
           </figure>
           <div className="space-y-2">
             <h3 className="text-2xl font-semibold">{meal?.title}</h3>
@@ -36,7 +36,10 @@ function MealDetails() {
               style={{ maxWidth: 120 }}
               value={Math.floor(meal?.rating)}
             />
-            <p className="text-xl font-semibold">${meal?.price}</p>
+            <p className="text-xl font-semibold">
+              {" "}
+              <span className="font-semibold">Price:</span> ${meal?.price}
+            </p>
             <div className="space-x-2">
               <PrimayBtn title={<SlLike />} />
               <PrimayBtn title={"Mile Request"} />

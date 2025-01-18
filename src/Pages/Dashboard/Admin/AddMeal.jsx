@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAxiosPublice from "../../../Hooks/useAxiosPublice";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
@@ -12,6 +13,7 @@ const AddMealForm = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublice();
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
 
   // Admin info
   let adminName = user?.displayName;
@@ -49,18 +51,31 @@ const AddMealForm = () => {
         reviews_count: 0,
       };
 
-      console.log("add meal data form addmealForm --->", mealData);
-
-      //TODO: Submit meal data to your server
-      //   await axios.post("/api/meals", mealData);
-
+      //Submit meal data to the server
       Swal.fire({
-        icon: "success",
-        title: "Meal added successfully!",
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Are sure add meal?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, add it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          //Submit meal data to the server
+
+          await axiosSecure.post("/meals", mealData).then((res) => {
+            console.log(res.data);
+
+            Swal.fire({
+              title: "Add Successfully",
+              icon: "success",
+            });
+
+            // navigate to all meals page
+            navigate("/meals");
+          });
+        }
       });
-      navigate("/meals");
     } catch (error) {
       console.error("Error uploading meal:", error);
       Swal.fire("Failed to upload meal. Please try again.");

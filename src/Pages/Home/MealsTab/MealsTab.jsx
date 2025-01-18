@@ -44,9 +44,6 @@ function MealsTab() {
           </TabPanel>
         </Tabs>
       </div>
-      <Link to={"/meals"}>
-        <PrimayBtn title={"Show All Meal"} />
-      </Link>
     </Container>
   );
 }

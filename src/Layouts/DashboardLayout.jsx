@@ -41,50 +41,58 @@ const DashboardLayout = () => {
             {/* menu section */}
             <div className="flex-grow">
               <div className="menu">
-                {isAdmin ? (
-                  <ul>
-                    {/* Admin content here */}
-                    <li>
-                      <NavLink to={"admin-profile"}>Admin Home</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"manage-users"}>All Users (manage)</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"add-meal"}>Add Meal</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"all-meal-table"}>all Meals</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"all-review"}>All Reviews</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"serve-meals"}>Serve Meals</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"upcoming-meals"}>Upcoming Meals</NavLink>
-                    </li>
-                  </ul>
-                ) : (
-                  <ul className="space-y-2">
-                    {/* User content here */}
-                    <li>
-                      <NavLink to={"user-profile"}>My Profile</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"requested-meals"}>Requested Meals</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"user-review"}>My Reviews</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={"user-payment-history"}>
-                        Payment History
-                      </NavLink>
-                    </li>
-                  </ul>
-                )}
+                <ul>
+                  {isAdmin ? (
+                    <>
+                      {/* Admin content here */}
+                      <li>
+                        <NavLink to={"/dashboard/admin-profile"}>
+                          Admin Home
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"manage-users"}>
+                          All Users (manage)
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"add-meal"}>Add Meal</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"all-meal-table"}>all Meals</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"all-review"}>All Reviews</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"serve-meals"}>Serve Meals</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"upcoming-meals"}>Upcoming Meals</NavLink>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      {/* User content here */}
+                      <li>
+                        <NavLink to={"user-profile"}>My Profile</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"requested-meals"}>
+                          Requested Meals
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"user-review"}>My Reviews</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"user-payment-history"}>
+                          Payment History
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
+                </ul>
                 <div className="divider"></div>
                 <ul>
                   <li>

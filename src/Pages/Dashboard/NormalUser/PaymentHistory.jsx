@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import useAxiosPublice from "../../../Hooks/useAxiosPublice";
+import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
 
 const PaymentHistory = () => {
-  const [paymentHistory, setPaymentHistory] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const axiosPublice = useAxiosPublice();
+  const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    // Fetch payment history of the logged-in user (simulate API call)
-    const fetchPaymentHistory = async () => {
-      setLoading(true);
-      try {
-        // Simulating a fetch request to an API
-        const response = await fetch("/api/payment-history");
-        const data = await response.json();
+  // user payment histroy get from server
+  const { data: paymentHistory = [], isLoading } = useQuery({
+    queryKey: ["payment-history"],
+    queryFn: async () => {
+      const res = await axiosPublice.get(`/payment-hostory/${user?.email}`);
+      return res.data;
+    },
+  });
 
-        if (data.length > 0) {
-          setPaymentHistory(data);
-        } else {
-          setPaymentHistory(null);
-        }
-      } catch (error) {
-        console.error("Error fetching payment history:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  console.log(" payment history is --->", paymentHistory);
 
-    fetchPaymentHistory();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center py-8">
         <button className="btn btn-loading">Loading...</button>
@@ -42,7 +30,7 @@ const PaymentHistory = () => {
     <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">Payment History</h2>
 
-      {paymentHistory === null ? (
+      {paymentHistory.length === 0 ? (
         <div className="alert alert-warning">
           <div>
             <span>No payment history found</span>
@@ -61,20 +49,12 @@ const PaymentHistory = () => {
             </thead>
             <tbody>
               {paymentHistory.map((payment) => (
-                <tr key={payment.id}>
-                  <td>{payment.id}</td>
-                  <td>{payment.amount}</td>
-                  <td>{new Date(payment.date).toLocaleDateString()}</td>
+                <tr key={payment._id}>
+                  <td>{payment.transctionId}</td>
+                  <td>{payment.amount / 1000}</td>
+                  <td>{new Date(payment?.date).toLocaleDateString()}</td>
                   <td>
-                    <span
-                      className={`badge ${
-                        payment.status === "Success"
-                          ? "badge-success"
-                          : "badge-error"
-                      }`}
-                    >
-                      {payment.status}
-                    </span>
+                    <span className={`badge`}>{payment?.planName}</span>
                   </td>
                 </tr>
               ))}

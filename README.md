@@ -39,8 +39,10 @@ NOTE: user for use image url https://i.pravatar.cc/300
 2. Meal Detail Page:
 
 - Displays meal details
-
+- Like Button
 - Meal Request Button
+-
+-
 
 5. Checkout Page (Private Route)
 
@@ -50,6 +52,8 @@ NOTE: user for use image url https://i.pravatar.cc/300
 
 - User Profile
 - Requested Meals
+-
+- Payment History
 
 8. Admin Dashboard
 

@@ -73,10 +73,14 @@ const CheckOutForm = ({ price, planName }) => {
       if (paymentIntent.status === "succeeded") {
         setTransctionId(paymentIntent?.id);
 
+        console.log("pay ment intent is --->", paymentIntent);
+
         const paymentsInfo = {
           userEmail: user?.email,
           planName: planName,
+          amount: paymentIntent?.amount,
           transctionId: paymentIntent?.id,
+          date: new Date().toLocaleDateString(),
         };
 
         // store payments infon in database
@@ -94,9 +98,7 @@ const CheckOutForm = ({ price, planName }) => {
 
         await axiosSecure
           .patch(`/users/${user.email}`, { badge: planName })
-          .then((res) => {
-            console.log(res.data);
-          });
+          .then(() => {});
       }
     }
   };

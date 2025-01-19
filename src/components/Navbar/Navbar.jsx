@@ -34,7 +34,7 @@ function Navbar() {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/user/login");
+        navigate("/login");
       })
       .catch((error) => {
         if (error.code) {
@@ -80,13 +80,13 @@ function Navbar() {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <p className="menu menu-horizontal px-1">{links}</p>
         </div>
 
         <div className="navbar-end">
           {!user ? (
             <Link
-              to={"/user/login"}
+              to={"/login"}
               className="btn bg-green-900 hover:bg-green-800 text-white"
             >
               Join Us

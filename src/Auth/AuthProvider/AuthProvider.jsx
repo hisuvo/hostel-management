@@ -47,6 +47,7 @@ function AuthProvider({ children }) {
 
   // Update profile
   const updateUserProfile = (name, url) => {
+    setLoading(true);
     updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: url,
@@ -70,8 +71,8 @@ function AuthProvider({ children }) {
       } else {
         // remove token from localStroge
         localStorage.removeItem("access-token");
+        setLoading(false);
       }
-      // setLoading(false);
     });
     return () => unSubscribe();
   }, [axiosPublice]);

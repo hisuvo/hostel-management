@@ -197,7 +197,7 @@ export default function SingUP() {
           <div className="text-sm text-center font-medium text-gray-500 dark:text-gray-300">
             Already have an Acount?{" "}
             <Link
-              to={"/user/login"}
+              to={"/login"}
               className="text-blue-700 hover:underline dark:text-blue-500"
             >
               SingIn

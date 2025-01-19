@@ -64,11 +64,11 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "user/login",
+    path: "/login",
     element: <Login />,
   },
   {
-    path: "user/singUp",
+    path: "/singUp",
     element: <SingUP />,
   },
   {
@@ -78,19 +78,35 @@ const router = createBrowserRouter([
       // normal user
       {
         path: "user-profile",
-        element: <UserProfile />,
+        element: (
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "requested-meals",
-        element: <RequestedMeals />,
+        element: (
+          <PrivateRoute>
+            <RequestedMeals />
+          </PrivateRoute>
+        ),
       },
       {
         path: "user-review",
-        element: <UserReviews />,
+        element: (
+          <PrivateRoute>
+            <UserReviews />
+          </PrivateRoute>
+        ),
       },
       {
         path: "user-payment-history",
-        element: <PaymentHistory />,
+        element: (
+          <PrivateRoute>
+            <PaymentHistory />
+          </PrivateRoute>
+        ),
       },
       // admin infor
       {

@@ -4,7 +4,7 @@
 
 # Client side Live link
 
-- > https://hostel-management-9436b.web.app/
+- > https://hostel-management-9436b.web.app
 
 # Server side git repo link
 
@@ -47,3 +47,5 @@ NOTE: user for use image url https://i.pravatar.cc/300
 - Admin Profile:
 - Manage Users
 - add meal
+
+<!-- className="btn bg-blue-700 hover:bg-blue-800 text-white" -->

@@ -91,7 +91,7 @@ export default function Login() {
         <div className="text-sm text-center font-medium text-gray-500 dark:text-gray-300">
           Not registered?{" "}
           <Link
-            to={"/user/singUp"}
+            to={"/singUp"}
             className="text-blue-700 hover:underline dark:text-blue-500"
           >
             Create account

@@ -17,8 +17,6 @@ const UserProfile = () => {
     enabled: true,
   });
 
-  console.log(userBadge);
-
   return (
     <div className="max-w-2xl mx-auto mt-6 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="flex items-center px-6 py-3 bg-blue-900">
@@ -56,7 +54,7 @@ const UserProfile = () => {
           <h3 className="text-gray-800 font-semibold text-lg mb-2">
             Badge Stats
           </h3>
-          <p className="text-gray-600 text-8xl">
+          <div className="text-gray-600 text-8xl">
             {userBadge?.badge === "Silver Plan" && (
               <h2 title={`${userBadge?.badge}`} className="text-slate-300">
                 <GiPoliceBadge />
@@ -77,7 +75,7 @@ const UserProfile = () => {
                 <GiPoliceBadge />
               </h2>
             )}
-          </p>
+          </div>
         </div>
       </div>
     </div>

@@ -28,7 +28,9 @@ function MealCard({ meal }) {
             ${price}
           </span>
           <Link to={`/meal-details/${_id}`}>
-            <PrimayBtn title={" Show Details"} />
+            <button className="btn bg-blue-700 hover:bg-blue-800 text-white">
+              Show Details
+            </button>
           </Link>
         </div>
       </div>

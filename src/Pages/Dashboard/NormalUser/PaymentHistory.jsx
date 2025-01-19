@@ -63,7 +63,7 @@ const PaymentHistory = () => {
               {paymentHistory.map((payment) => (
                 <tr key={payment.id}>
                   <td>{payment.id}</td>
-                  <td>${payment.amount}</td>
+                  <td>{payment.amount}</td>
                   <td>{new Date(payment.date).toLocaleDateString()}</td>
                   <td>
                     <span

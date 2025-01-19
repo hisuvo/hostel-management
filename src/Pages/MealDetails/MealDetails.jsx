@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import useMeal from "../../Hooks/useMeal";
 import Container from "../../shared/Container/Container";
@@ -13,9 +13,9 @@ import Swal from "sweetalert2";
 function MealDetails() {
   const [error, setError] = useState(" ");
   const { user } = useContext(AuthContext);
-  const axiosPublive = useAxiosPublice();
+  const axiosPublice = useAxiosPublice();
   const { id } = useParams();
-  const [meals] = useMeal();
+  const [meals, refetch] = useMeal();
   const [users] = useUser();
 
   // fiter current meal
@@ -24,9 +24,17 @@ function MealDetails() {
   // fiter current user
   const userBadge = users.filter((badge) => badge?.email === user?.email)[0];
 
-  // send like in server
-  const handleLike = () => {
-    console.log("hanlde like of meal");
+  // meal likes send database
+  const handleLike = (id) => {
+    axiosPublice
+      .patch(`/meal-like/${id}`)
+      .then((res) => {
+        refetch();
+        console.log("cls", res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // meal request info send in database
@@ -44,7 +52,7 @@ function MealDetails() {
       };
 
       // send user requested meal in database requestcollection
-      axiosPublive
+      axiosPublice
         .post("/meal/request", requestMeal)
         .then((res) => {
           // console.log("request meal conform data status --->", res.data);
@@ -107,9 +115,16 @@ function MealDetails() {
             <span className="font-semibold">Price:</span> ${meal?.price}
           </p>
 
+          {/* meal price  */}
+          <p className="text-base text-blue-800">{meal?.likes} likes</p>
+
           <p className="text-red-500">{error.badge}</p>
+
           <div className="space-x-2">
-            <PrimayBtn onClick={handleLike} title={<SlLike />} />
+            <PrimayBtn
+              onClick={() => handleLike(meal?._id)}
+              title={<SlLike />}
+            />
             <PrimayBtn title={"Meal Request"} onClick={handleRequest} />
           </div>
         </div>

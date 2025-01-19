@@ -36,12 +36,14 @@ function MealDetails() {
       setError({ badge: "requires a package subscriptio" });
     } else {
       const requestMeal = {
-        mealId: meal?._id,
-        requestUser: user?.email,
+        requestEmail: user?.email,
+        title: meal?.title,
+        likes: meal?.likes,
+        reviews_count: meal.reviews_count,
         status: "pending",
       };
 
-      // send requested meal in database request collection
+      // send user requested meal in database requestcollection
       axiosPublive
         .post("/meal/request", requestMeal)
         .then((res) => {

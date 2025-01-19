@@ -36,11 +36,20 @@ NOTE: user for use image url https://i.pravatar.cc/300
 -
 -
 
+2. Meal Detail Page:
+
+- Displays meal details
+
+- Meal Request Button
+
 5. Checkout Page (Private Route)
+
 6. join use page (login/register)
+
 7. User Dashboard
 
 - User Profile
+- Requested Meals
 
 8. Admin Dashboard
 

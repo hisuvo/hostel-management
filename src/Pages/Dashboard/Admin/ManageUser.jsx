@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
 const ManageUser = () => {
-  const [searchQuery, setSearchQuery] = useState();
+  const [searchQuery, setSearchQuery] = useState("");
   const axiosSecure = useAxiosSecure();
 
   const { data: users = [], refetch } = useQuery({

@@ -9,11 +9,15 @@ import { SlLike } from "react-icons/sl";
 import useUser from "../../Hooks/useUser";
 import useAxiosPublice from "../../Hooks/useAxiosPublice";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 function MealDetails() {
   const [error, setError] = useState(" ");
+  const [review, setReview] = useState("");
   const { user } = useContext(AuthContext);
   const axiosPublice = useAxiosPublice();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [meals, refetch] = useMeal();
   const [users] = useUser();
@@ -68,6 +72,34 @@ function MealDetails() {
         })
         .catch((error) => Swal.filre(error.message));
     }
+  };
+
+  // meal reviews
+  const handleReview = (e) => {
+    e.preventDefault();
+
+    const mealReview = {
+      reviewerEmail: user?.email,
+      mealId: meal?._id,
+      review: review,
+    };
+
+    axiosPublice
+      .post("/reviews", mealReview)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error.datta);
+      });
+
+    // const {data: reviews =[]} = useQuery({
+    //   queryKey:['meal-reviews'],
+    //   queryFn: async () => {
+    //     const
+    //   }
+    // })
+    setReview("");
   };
 
   return (
@@ -133,16 +165,24 @@ function MealDetails() {
       {/* meal review */}
       <div className="mt-4">
         <h2 className="text-xl font-semibold">Reviews</h2>
-        <form action="" className="mt-4">
+        <form onSubmit={handleReview} className="mt-4">
           <textarea
-            name=""
+            name="review"
+            value={review}
             placeholder="Write your review here...."
             className="rounded w-full p-2 border"
             rows={"3"}
+            onChange={(e) => setReview(e.target.value)}
           ></textarea>
-          <PrimayBtn title={"Submit Review"} />
+          {/* review submit button */}
+
+          {review ? (
+            <PrimayBtn title={"Submit Review"} />
+          ) : (
+            <button className={`btn disabled`}>Submit Review</button>
+          )}
         </form>
-        {/* TODO: Review text and user name here */}
+        {/* Display the review text  */}
       </div>
     </Container>
   );

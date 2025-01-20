@@ -142,19 +142,43 @@ const router = createBrowserRouter([
       },
       {
         path: "all-meal-table",
-        element: <AllMealTable />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllMealTable />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "all-review",
-        element: <AllReview />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllReview />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "serve-meals",
-        element: <ServeMeal />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ServeMeal />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "upcoming-meals",
-        element: <UpcammingMeal />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <UpcammingMeal />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },

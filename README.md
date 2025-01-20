@@ -41,8 +41,7 @@ NOTE: user for use image url https://i.pravatar.cc/300
 - Displays meal details
 - Like Button
 - Meal Request Button
--
--
+  -Review Section
 
 5. Checkout Page (Private Route)
 

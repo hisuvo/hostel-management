@@ -9,15 +9,12 @@ import { SlLike } from "react-icons/sl";
 import useUser from "../../Hooks/useUser";
 import useAxiosPublice from "../../Hooks/useAxiosPublice";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 function MealDetails() {
   const [error, setError] = useState(" ");
   const [review, setReview] = useState("");
   const { user } = useContext(AuthContext);
   const axiosPublice = useAxiosPublice();
-  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [meals, refetch] = useMeal();
   const [users] = useUser();
@@ -32,12 +29,11 @@ function MealDetails() {
   const handleLike = (id) => {
     axiosPublice
       .patch(`/meal-like/${id}`)
-      .then((res) => {
+      .then(() => {
         refetch();
-        console.log("cls", res);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -80,6 +76,8 @@ function MealDetails() {
 
     const mealReview = {
       reviewerEmail: user?.email,
+      title: meal?.title,
+      likes: meal?.likes,
       mealId: meal?._id,
       review: review,
     };
@@ -87,18 +85,23 @@ function MealDetails() {
     axiosPublice
       .post("/reviews", mealReview)
       .then((res) => {
-        console.log(res.data);
+        if (res.data.acknowledged) {
+          Swal.fire("Your important review is posted");
+          // review count increment form database mealcollection
+          axiosPublice
+            .patch(`/review_count/${id}`)
+            .then(() => {
+              refetch();
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
       })
       .catch((error) => {
-        console.log(error.datta);
+        Swal.fire(`${error.messafe}`);
       });
 
-    // const {data: reviews =[]} = useQuery({
-    //   queryKey:['meal-reviews'],
-    //   queryFn: async () => {
-    //     const
-    //   }
-    // })
     setReview("");
   };
 
@@ -164,7 +167,9 @@ function MealDetails() {
 
       {/* meal review */}
       <div className="mt-4">
-        <h2 className="text-xl font-semibold">Reviews</h2>
+        <h2 className="text-xl font-semibold">
+          Reviews ({meal?.reviews_count})
+        </h2>
         <form onSubmit={handleReview} className="mt-4">
           <textarea
             name="review"
@@ -179,7 +184,7 @@ function MealDetails() {
           {review ? (
             <PrimayBtn title={"Submit Review"} />
           ) : (
-            <button className={`btn disabled`}>Submit Review</button>
+            <h2 className={`btn disabled`}>Before input review</h2>
           )}
         </form>
         {/* Display the review text  */}

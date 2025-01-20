@@ -31,27 +31,29 @@ NOTE: user for use image url https://i.pravatar.cc/300
 1. Home Page:
 
 - Navbar
--
+<!-- - Banner Section: -->
 - Meals by Category
--
--
+  <!-- - Additional 1 Sections -->
+  <!-- - Additional 2 Sections -->
+  <!-- - Footer Section -->
 
 2. Meal Detail Page:
 
 - Displays meal details
 - Like Button
 - Meal Request Button
-  -Review Section
+- Review Section
+
+<!-- 3. Meals Page: -->
+<!-- 4. Meals Page: -->
 
 5. Checkout Page (Private Route)
-
 6. join use page (login/register)
-
 7. User Dashboard
 
 - User Profile
 - Requested Meals
--
+- My Reviews
 - Payment History
 
 8. Admin Dashboard
@@ -59,5 +61,7 @@ NOTE: user for use image url https://i.pravatar.cc/300
 - Admin Profile:
 - Manage Users
 - add meal
-
-<!-- className="btn bg-blue-700 hover:bg-blue-800 text-white" -->
+  <!-- - All Meals -->
+  <!-- - All Reviews runing -->
+  <!-- - Serve Meals -->
+  <!-- - Upcoming Meals -->

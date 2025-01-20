@@ -78,6 +78,7 @@ function MealDetails() {
       reviewerEmail: user?.email,
       title: meal?.title,
       likes: meal?.likes,
+      reviews_count: meal?.reviews_count,
       mealId: meal?._id,
       review: review,
     };

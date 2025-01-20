@@ -4,6 +4,7 @@ import useReview from "../../../Hooks/useReview";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import EditReview from "../../../components/EditReview/EditReview";
 
 const UserReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -51,8 +52,9 @@ const UserReviews = () => {
                     <PrimayBtn title={"view"} />
                   </Link>
 
-                  <PrimayBtn title={"Edit"} />
-
+                  {/* TODO: parse here updat info  */}
+                  {/* <PrimayBtn title={"Edit"} /> */}
+                  <EditReview review={review} refetch={refetch} />
                   {/* delete review button */}
                   <PrimayBtn
                     onClick={() => handleDelete(review?._id)}

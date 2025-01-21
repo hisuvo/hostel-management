@@ -23,6 +23,7 @@
 - react-icon
 - react-awesome-button
 - react-stripe-js
+- react-infinite-scroll-component
 
 NOTE: user for use image url https://i.pravatar.cc/300
 
@@ -44,12 +45,12 @@ NOTE: user for use image url https://i.pravatar.cc/300
 - Meal Request Button
 - Review Section
 
-<!-- 3. Meals Page -->
+3. Meals Page
 <!-- 4. Upcoming Page -->
 
-5. Checkout Page (Private Route)
-6. join use page (login/register)
-7. User Dashboard
+4. Checkout Page (Private Route)
+5. join use page (login/register)
+6. User Dashboard
 
 - User Profile
 - Requested Meals
@@ -61,7 +62,7 @@ NOTE: user for use image url https://i.pravatar.cc/300
 - Admin Profile:
 - Manage Users
 - add meal
-<!-- - All Meals runing -->
+- All Meals runing // Todo: update button
 - All Reviews
 - Serve Meals
     <!-- - Upcoming Meals -->

@@ -45,6 +45,7 @@ function MealDetails() {
     } else {
       const requestMeal = {
         requestEmail: user?.email,
+        userName: user?.displayName,
         title: meal?.title,
         likes: meal?.likes,
         reviews_count: meal.reviews_count,

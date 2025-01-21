@@ -55,7 +55,9 @@ const RequestedMeals = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Requested Meals</h2>
+      <h2 className="text-2xl font-bold mb-4">
+        Requested Meals ({requestMeals.length})
+      </h2>
 
       {/* Table */}
       <div className="overflow-x-auto">
@@ -74,16 +76,31 @@ const RequestedMeals = () => {
 
           {/* Table Body */}
           <tbody>
-            {requestMeals.map((meal, index) => (
-              <tr key={meal._id}>
+            {requestMeals.map((request, index) => (
+              <tr key={request._id}>
                 <td>{++index}</td>
-                <td>{meal.title}</td>
-                <td>{meal.likes}</td>
-                <td>{meal.reviews_count}</td>
-                <td>{meal?.status}</td>
-                <td className="flex gap-2">
+                <td>{request?.title}</td>
+                <td>{request?.likes}</td>
+                <td>{request?.reviews_count}</td>
+                <td>
+                  <span
+                    className={`badge ${
+                      request?.status === "delivered"
+                        ? "badge-success text-white"
+                        : "badge-secondary"
+                    } `}
+                  >
+                    {request?.status}
+                  </span>
+                </td>
+
+                <td
+                  className={`flex gap-2 ${
+                    request?.status === "delivered" ? "btn-disabled" : " "
+                  }`}
+                >
                   <PrimayBtn
-                    onClick={() => handleRequestCancle(meal._id)}
+                    onClick={() => handleRequestCancle(request?._id)}
                     title={"Cancel"}
                   />
                 </td>

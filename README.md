@@ -62,6 +62,6 @@ NOTE: user for use image url https://i.pravatar.cc/300
 - Manage Users
 - add meal
   <!-- - All Meals -->
-  <!-- - All Reviews runing -->
-  <!-- - Serve Meals -->
-  <!-- - Upcoming Meals -->
+- All Reviews
+    <!-- - Serve Meals running -->
+    <!-- - Upcoming Meals -->

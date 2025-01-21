@@ -1,22 +1,29 @@
 import React from "react";
+import Container from "../../shared/Container/Container";
 
 function Banner() {
   return (
-    <div className="bg-green-50 py-32">
-      <div className="max-w-[55rem] mx-auto space-y-4">
-        <h2 className="text-4xl text-center font-semibold ">
-          "Effortless Meal Management for University Hostels"
-        </h2>
-        <p className="text-center">
-          "Plan, track, and enjoy nutritious meals with ease. Our hostel meal
-          management system ensures timely updates, transparent billing, and a
-          delightful dining experience for students. Your comfort is our
-          priority!"
+    <div className="bg-blue-950 min-h-[calc(100vh-150px)] flex justify-center items-center px-4">
+      <div className="max-w-4xl mx-auto text-white text-center">
+        <h1 className="text-2xl md:text-4xl font-bold mb-4">
+          Welcome to the University Hostel
+        </h1>
+
+        <p className="text-base md:text-lg mb-8">
+          Manage student meals, food reviews, and streamline hostel operations
+          all in one place.
         </p>
-        {/* TODO: here input search bar create Search for hostel menus, meal schedules, or preferences... */}
-        <h2 className="text-center">
-          <button className="btn">Get Start</button>
-        </h2>
+
+        <div className="flex justify-center items-center">
+          <input
+            type="text"
+            placeholder="Search by student or hostel..."
+            className="w-3/4 md:w-1/2 px-4 py-2 text-gray-700 rounded-l-md focus:outline-none"
+          />
+          <button className="bg-white text-blue-600 px-6 py-2 font-semibold rounded-r-md hover:bg-gray-200">
+            Search
+          </button>
+        </div>
       </div>
     </div>
   );

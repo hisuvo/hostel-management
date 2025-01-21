@@ -8,8 +8,12 @@ function MealCard({ meal }) {
   const { _id, title, image, rating, price } = meal;
 
   return (
-    <div className="w-full max-w-sm flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <img className="rounded-t-lg flex-grow" src={image} alt={title} />
+    <div className="w-full  flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <img
+        className="rounded-t-lg h-[15rem] object-cover flex-grow"
+        src={image}
+        alt={title}
+      />
 
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">

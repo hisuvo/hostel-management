@@ -76,7 +76,9 @@ function MealDetails() {
     e.preventDefault();
 
     const mealReview = {
+      name: user?.displayName,
       reviewerEmail: user?.email,
+      image: user?.photoURL,
       title: meal?.title,
       likes: meal?.likes,
       reviews_count: meal?.reviews_count,

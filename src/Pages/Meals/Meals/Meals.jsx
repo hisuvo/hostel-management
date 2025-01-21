@@ -26,7 +26,7 @@ function Meals() {
   }, [search, category, minPrice, maxPrice]);
 
   return (
-    <Container>
+    <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4 mb-14">
       {/* search meal section */}
       <div className="p-6 bg-blue-200 rounded-lg mb-6">
         <h1 className="text-2xl font-bold  mb-4">Search Meals</h1>
@@ -88,7 +88,7 @@ function Meals() {
           <p className="text-4xl text-blue-900 text-center">No meals found</p>
         </div>
       )}
-    </Container>
+    </div>
   );
 }
 

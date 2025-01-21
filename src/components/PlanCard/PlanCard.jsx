@@ -5,9 +5,9 @@ function PlanCard({ plan }) {
     <div>
       <div
         className={`card 
-          ${plan.name === "Silver Plan" ? "bg-gray-500 text-white" : ""}
-          ${plan.name === "Gold Plan" ? "bg-yellow-500 text-white" : ""}
-          ${plan.name === "Platinum Plan" ? "bg-blue-950 text-white" : ""}
+          ${plan.name === "Silver Plan" ? "bg-gray-300 " : ""}
+          ${plan.name === "Gold Plan" ? "bg-yellow-300 " : ""}
+          ${plan.name === "Platinum Plan" ? "bg-sky-300 " : ""}
             shadow-lg p-6 rounded-lg`}
       >
         <h3 className="text-2xl font-bold text-center mb-4">{plan.name}</h3>
@@ -23,7 +23,9 @@ function PlanCard({ plan }) {
         </ul>
         {/* checkput button */}
         <Link to={`/checkout/${plan.name}`}>
-          <button className="btn btn-primary w-full">Select {plan.name}</button>
+          <button className="btn bg-blue-700 outline-none border-none hover:bg-blue-800 text-white w-full">
+            Select {plan.name}
+          </button>
         </Link>
       </div>
     </div>

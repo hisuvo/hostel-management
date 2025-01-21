@@ -24,6 +24,7 @@
 - react-awesome-button
 - react-stripe-js
 - react-infinite-scroll-component
+- react-fast-marquee
 
 NOTE: user for use image url https://i.pravatar.cc/300
 
@@ -32,11 +33,11 @@ NOTE: user for use image url https://i.pravatar.cc/300
 1. Home Page:
 
 - Navbar
-<!-- - Banner Section -->
+- Banner Section
 - Meals by Category
   <!-- - Additional 1 Sections -->
-  <!-- - Additional 2 Sections -->
-  <!-- - Footer Section -->
+  - Additional 2 Sections
+  - Footer Section
 
 2. Meal Detail Page:
 

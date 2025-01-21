@@ -49,7 +49,7 @@ function Navbar() {
       });
   };
   return (
-    <div className="backdrop-blur-sm bg-gray-200/30  py-2 border-b-2 border-green-950 ">
+    <div className="backdrop-blur-sm bg-white py-2 ">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">

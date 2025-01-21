@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
-import useUser from "../../../Hooks/useUser";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
@@ -18,8 +17,6 @@ export default function AdminProfile() {
       return res.data;
     },
   });
-
-  console.log(addMeals);
 
   return (
     <div className="max-w-2xl mx-auto mt-6 bg-white shadow-lg rounded-lg overflow-hidden">

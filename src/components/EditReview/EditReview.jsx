@@ -35,8 +35,6 @@ const EditReview = ({ review, refetch }) => {
     setIsOpen(false);
   }
 
-  console.log(review);
-
   const hanldeEdit = (e) => {
     e.preventDefault();
     axiosSecure

@@ -1,40 +1,87 @@
-import React from "react";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
+import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 
 const AllMealTable = () => {
-  // const [sortField, setSortField] = useState(""); // To track the current sort field
+  const axiosSecure = useAxiosSecure();
+  const [meals, setMeals] = useState([]);
+  const [sortBy, setSortBy] = useState("likes");
+  const [order, setOrder] = useState("desc");
 
-  // const handleSort = (field) => {
-  //   setSortField(field);
-  //   // Call server-side sorting logic here with the field (likes or reviews_count)
-  //   console.log(`Sorting by ${field}`);
-  // };
+  // deleted meal
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: "Are you sure to delete",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        // ---
+        await axiosSecure
+          .delete(`/delete-meal/${id}`)
+          .then((res) => {
+            if (res.data.acknowledged) {
+              Swal.fire({
+                title: "Deleted",
+                icon: "success",
+              });
+              setMeals((prev) => prev.filter((meal) => meal._id !== id)); //
+            }
+          })
+          .catch((error) => {
+            Swal.fire(error.message);
+          });
+      }
+    });
+  };
+
+  // meal likes and review_count sort order
+  useEffect(() => {
+    const fetchMeals = async () => {
+      await axiosSecure
+        .get(`/meals/sortOrder`, { params: { sortBy, order } })
+        .then((res) => {
+          setMeals(res.data);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    };
+
+    fetchMeals();
+  }, [sortBy, order]);
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">All Meals</h2>
 
       {/* Search and Sort Controls */}
-      <div className="flex justify-end items-center mb-6">
+      <div className="p-4 bg-blue-200 rounded-md">
         {/* Sort Buttons */}
-        <div className="flex gap-4">
-          <button
-            //ToDo: onClick={() => handleSort("likes")}
-            className={`btn btn-sm ${
-              // sortField === "likes" ? "btn-active" : ""
-              true === "likes" ? "btn-active" : ""
-            }`}
+        <div className="flex justify-start items-center gap-4">
+          <label className="text-xl font-semibold">Sort By:</label>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="p-2 px-2 rounded-md outline-blue-500"
           >
-            Sort by Likes
-          </button>
-          <button
-            //TODO: onClick={() => handleSort("reviews_count")}
-            className={`btn btn-sm ${
-              // sortField === "reviews_count" ? "btn-active" : ""
-              true === "reviews_count" ? "btn-active" : ""
-            }`}
+            <option value="likes">Likes</option>
+            <option value="reviews_count">Reviews Count</option>
+          </select>
+
+          <label className="text-xl font-semibold">Order:</label>
+          <select
+            value={order}
+            onChange={(e) => setOrder(e.target.value)}
+            className="p-2 px-2 rounded-md outline-blue-500"
           >
-            Sort by Reviews Count
-          </button>
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+          </select>
         </div>
       </div>
 
@@ -56,31 +103,30 @@ const AllMealTable = () => {
 
           {/* Table Body */}
           <tbody>
-            {/* Example Row 3 */}
-            <tr>
-              <td>3</td>
-              <td>Spaghetti Bolognese</td>
-              <td>200</td>
-              <td>50</td>
-              <td>
-                <div className="rating">
-                  <input
-                    type="radio"
-                    name="rating-3"
-                    className="mask mask-star-2 bg-yellow-400"
-                    checked
-                    readOnly
+            {meals.map((meal, index) => (
+              <tr key={meal?._id}>
+                <td>{++index}</td>
+                <td>{meal?.title}</td>
+                <td>{meal?.likes}</td>
+                <td>{meal?.reviews_count}</td>
+                <td>{meal?.rating}</td>
+
+                <td>{meal?.distributorName}</td>
+
+                <td className="flex gap-2">
+                  <Link to={`/meal-details/${meal?._id}`}>
+                    <PrimayBtn title={"view"} />
+                  </Link>
+
+                  <PrimayBtn title={"Update"} />
+
+                  <PrimayBtn
+                    onClick={() => handleDelete(meal?._id)}
+                    title={"Delete"}
                   />
-                  <span>4.8</span>
-                </div>
-              </td>
-              <td>Michael Johnson</td>
-              <td className="flex gap-2">
-                <PrimayBtn title={"view"} />
-                <PrimayBtn title={"Update"} />
-                <PrimayBtn title={"Delete"} />
-              </td>
-            </tr>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

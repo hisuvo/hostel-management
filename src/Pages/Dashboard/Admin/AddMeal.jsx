@@ -5,6 +5,7 @@ import useAxiosPublice from "../../../Hooks/useAxiosPublice";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 
 const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
@@ -220,9 +221,7 @@ const AddMealForm = () => {
 
         {/* Submit Button */}
         <div className="text-center">
-          <button type="submit" className="btn btn-primary">
-            Add Meal
-          </button>
+          <PrimayBtn title={"Add Meal"} />
         </div>
       </form>
     </div>

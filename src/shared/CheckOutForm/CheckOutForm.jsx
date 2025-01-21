@@ -22,7 +22,7 @@ const CheckOutForm = ({ price, planName }) => {
         setClientSecret(res.data.clientSecret);
       })
       .catch((error) => {
-        console.log("check out error --->", error);
+        // console.log("check out error --->", error);
       });
   }, [axiosSecure]);
 
@@ -64,7 +64,7 @@ const CheckOutForm = ({ price, planName }) => {
         },
       });
     if (intentError) {
-      console.log(intentError);
+      // console.log(intentError);
       Swal.fire({
         icon: "error",
         text: `${intentError.message}`,
@@ -73,7 +73,7 @@ const CheckOutForm = ({ price, planName }) => {
       if (paymentIntent.status === "succeeded") {
         setTransctionId(paymentIntent?.id);
 
-        console.log("pay ment intent is --->", paymentIntent);
+        // console.log("pay ment intent is --->", paymentIntent);
 
         const paymentsInfo = {
           userEmail: user?.email,

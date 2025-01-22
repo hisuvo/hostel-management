@@ -6,6 +6,7 @@ import SectionTitle from "../../../shared/SectionTitle";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import useUser from "../../../Hooks/useUser";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const UpcomingMeals = () => {
   const axiosPublice = useAxiosPublice();
@@ -27,6 +28,12 @@ const UpcomingMeals = () => {
       .patch(`/meal-like/${id}`)
       .then(() => {
         refetch();
+        Swal.fire({
+          position: "top-end",
+          text: "Thanks for like",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -58,22 +65,12 @@ const UpcomingMeals = () => {
               <p className="text-gray-500">
                 Publishing on: {new Date(meal?.postTime).toLocaleDateString()}
               </p>
+              <p className="text-xs text-blue-500 font-mono ">{meal?.like}</p>
               {userBadge?.badge !== "bronze" ? (
-                <div>
-                  {meal?.likes === 0 ? (
-                    <PrimayBtn
-                      title={"Like"}
-                      onClick={() => likeMeal(meal?._id)}
-                    ></PrimayBtn>
-                  ) : (
-                    <button
-                      className="btn btn-md btn-secondary"
-                      title={"Liked"}
-                    >
-                      Liked
-                    </button>
-                  )}
-                </div>
+                <PrimayBtn
+                  title={"Like"}
+                  onClick={() => likeMeal(meal?._id)}
+                ></PrimayBtn>
               ) : (
                 " "
               )}

@@ -22,13 +22,16 @@ const UpcomingMeals = () => {
   // current user bage filter;
   const userBadge = users.filter((badge) => badge?.email === user?.email)[0];
 
-  const likeMeal = async (mealId) => {
-    try {
-      await axiosPublice.post(`/like-meal/${mealId}`);
-      alert("Meal liked successfully!");
-    } catch (error) {
-      console.error("Error liking meal:", error.response.data);
-    }
+  const likeMeal = async (id) => {
+    axiosPublice
+      .patch(`/meal-like/${id}`)
+      .then(() => {
+        refetch();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    refetch();
   };
 
   return (
@@ -55,14 +58,19 @@ const UpcomingMeals = () => {
               <p className="text-gray-500">
                 Publishing on: {new Date(meal?.postTime).toLocaleDateString()}
               </p>
-              {["Silver", "Gold", "Platinum"].includes(userBadge?.badge) ? (
-                <PrimayBtn title={"Like"} onClick={() => likeMeal(meal?._id)}>
-                  Like
-                </PrimayBtn>
+              {userBadge?.badge !== "bronze" ? (
+                <div>
+                  {meal?.likes === 0 ? (
+                    <PrimayBtn
+                      title={"Like"}
+                      onClick={() => likeMeal(meal?._id)}
+                    ></PrimayBtn>
+                  ) : (
+                    <PrimayBtn title={"Liked"}></PrimayBtn>
+                  )}
+                </div>
               ) : (
-                <PrimayBtn title={"like"} onClick={() => likeMeal(meal?._id)}>
-                  Like
-                </PrimayBtn>
+                " "
               )}
             </div>
           </div>

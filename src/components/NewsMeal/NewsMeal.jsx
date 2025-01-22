@@ -11,7 +11,7 @@ const NewsMeal = () => {
 
   return (
     <Container>
-      <div className="grid gird-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid gird-cols-1 md:grid-cols-2 gap-4 my-4 md:my-0">
         <figure>
           <img
             className="w-xs object-cover rounded-xl"

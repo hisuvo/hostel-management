@@ -37,11 +37,8 @@ function ServeMeal() {
     });
   };
 
-  // Todo: get search data
-
   const handleSearch = () => {
     axiosSecure
-      // .get(`/requester/search?name=${searchQuery}&email=${searchQuery}`)
       .get(`/requester/search?value=${encodeURIComponent(searchQuery)}`)
       .then((res) => {
         setFilterRequests(res.data);

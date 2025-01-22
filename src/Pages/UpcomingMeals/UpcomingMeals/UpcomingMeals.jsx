@@ -66,7 +66,12 @@ const UpcomingMeals = () => {
                       onClick={() => likeMeal(meal?._id)}
                     ></PrimayBtn>
                   ) : (
-                    <PrimayBtn title={"Liked"}></PrimayBtn>
+                    <button
+                      className="btn btn-md btn-secondary"
+                      title={"Liked"}
+                    >
+                      Liked
+                    </button>
                   )}
                 </div>
               ) : (

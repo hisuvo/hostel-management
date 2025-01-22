@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useMeal from "../../../Hooks/useMeal";
 import Container from "../../../shared/Container/Container";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 const UpcomingMealTable = () => {
   const [meals, refetch] = useMeal();
   const axiosSecure = useAxiosSecure();
+  const [sortByLikes, setSortByLikes] = useState(false);
 
   // filter gatherthan time from current time;
   const filterUpcomingMeals = (meals) => {
@@ -31,11 +32,27 @@ const UpcomingMealTable = () => {
     refetch();
   };
 
+  // Toggle sorting by likes
+  const handleSortByLikes = () => {
+    setSortByLikes(!sortByLikes);
+  };
+
+  // Processed meals
+  const processedMeals = sortByLikes
+    ? filterUpcomingMeals(meals).sort((a, b) => b.likes - a.likes)
+    : filterUpcomingMeals(meals).sort((a, b) => a.likes - b.likes);
+
   return (
     <Container>
       {/* Search Bar */}
       <div className="bg-blue-100 p-4 rounded-md mb-4 ">
-        <PrimayBtn title={"Sort By Like"} />
+        {/* <PrimayBtn title={"Sort By Like"} /> */}
+        <PrimayBtn
+          onClick={handleSortByLikes}
+          title={
+            sortByLikes ? "Descending Sorting Likes" : "Ascending Sorting Likes"
+          }
+        />
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table table-zebra w-full border rounded-lg shadow-lg">
@@ -47,21 +64,19 @@ const UpcomingMealTable = () => {
             </tr>
           </thead>
           <tbody>
-            {meals.length > 0 ? (
-              filterUpcomingMeals(meals)
-                .sort((a, b) => b.likes - a.likes)
-                .map((meal) => (
-                  <tr key={meal._id} className="hover:bg-blue-100">
-                    <td className="py-3 px-4">{meal?.title}</td>
-                    <td className="py-3 px-4">{meal?.likes}</td>
-                    <td className="py-3 px-4">
-                      <PrimayBtn
-                        onClick={() => onPublish(`${meal?._id}`)}
-                        title={"Publish"}
-                      ></PrimayBtn>
-                    </td>
-                  </tr>
-                ))
+            {processedMeals.length > 0 ? (
+              processedMeals.map((meal) => (
+                <tr key={meal._id} className="hover:bg-blue-100">
+                  <td className="py-3 px-4">{meal?.title}</td>
+                  <td className="py-3 px-4">{meal?.likes}</td>
+                  <td className="py-3 px-4">
+                    <PrimayBtn
+                      onClick={() => onPublish(`${meal?._id}`)}
+                      title={"Publish"}
+                    ></PrimayBtn>
+                  </td>
+                </tr>
+              ))
             ) : (
               <tr>
                 <td

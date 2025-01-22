@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import useAdmin from "../../Hooks/useAdmin";
+import PrimayBtn from "../../shared/Buttons/PrimayBtn";
 
 function Navbar() {
   const { user, logOut } = useContext(AuthContext);
@@ -85,11 +86,8 @@ function Navbar() {
 
         <div className="navbar-end">
           {!user ? (
-            <Link
-              to={"/login"}
-              className="btn bg-green-900 hover:bg-green-800 text-white"
-            >
-              Join Us
+            <Link to={"/login"}>
+              <PrimayBtn title={"Join Us"} />
             </Link>
           ) : (
             <div className="dropdown dropdown-end">

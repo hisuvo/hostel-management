@@ -1,8 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import PrimayBtn from "../Buttons/PrimayBtn";
 
 function MealCard({ meal }) {
   const { _id, title, image, rating, price } = meal;
@@ -21,9 +19,9 @@ function MealCard({ meal }) {
         </h5>
         <div className="flex items-center mt-2.5 mb-5">
           <div>
-            <Rating style={{ maxWidth: 120 }} value={Math.floor(rating)} />
+            <Rating style={{ maxWidth: 120 }} value={rating} />
           </div>
-          <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-800 ms-3">
+          <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-800 ms-3">
             {Math.floor(rating)}
           </span>
         </div>

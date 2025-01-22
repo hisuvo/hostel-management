@@ -118,7 +118,9 @@ const AllMealTable = () => {
                     <PrimayBtn title={"view"} />
                   </Link>
 
-                  <PrimayBtn title={"Update"} />
+                  <Link to={`/dashboard/update-meal/${meal?._id}`}>
+                    <PrimayBtn title={"Update"} />
+                  </Link>
 
                   <PrimayBtn
                     onClick={() => handleDelete(meal?._id)}

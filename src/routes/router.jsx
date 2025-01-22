@@ -18,10 +18,11 @@ import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
 import AllMealTable from "../Pages/Dashboard/Admin/AllMealTable";
 import AllReview from "../Pages/Dashboard/Admin/AllReview";
 import ServeMeal from "../Pages/Dashboard/Admin/ServeMeal";
-import UpcammingMeal from "../Pages/Dashboard/Admin/UpcammingMeal";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import AdminRoute from "./AdminRoute";
+import UpcommingMealTable from "../Pages/Dashboard/Admin/UpcommingMealTable";
+import UpdateMeal from "../Pages/Dashboard/Admin/UpdateMeal";
 
 const router = createBrowserRouter([
   {
@@ -171,11 +172,21 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "upcoming-meals",
+        path: "all-upcoming-meals",
         element: (
           <PrivateRoute>
             <AdminRoute>
-              <UpcammingMeal />
+              <UpcommingMealTable />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "update-meal/:id",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <UpdateMeal />
             </AdminRoute>
           </PrivateRoute>
         ),

@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function UpcomingMeals() {
+const UpcomingMeals = () => {
   return <div>UpcomingMeals</div>;
-}
+};
+
+export default UpcomingMeals;

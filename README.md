@@ -1,10 +1,18 @@
+## This website name: Hostel M.
+
+## Admin username = Anupom Datta
+
+## Admin Email = anupom@gmail.com
+
+## Admin Password = Ad@$24
+
+## Client side Live link
+
+- > https://hostel-management-9436b.web.app
+
 # Client side git repo link
 
 - > https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-hisuvo
-
-# Client side Live link
-
-- > https://hostel-management-9436b.web.app
 
 # Server side git repo link
 
@@ -14,7 +22,21 @@
 
 - > https://hotsel-management-server.vercel.app/
 
-# NPM Package here
+## This website bullet points to feature
+
+1.Student Authentication
+2.Admin Dashboard
+3.Meal Management
+4.Food Reviews
+5.Meal Liking System
+6.Review Insights for Admins
+7.Responsive UI
+8.Search and Filter
+9.Feedback System
+10.Data Analytics for Admins
+11.Two-Role Support (Admin and user)
+
+# Uses NPM Package here
 
 - react-tabs
 - react-rating

@@ -68,7 +68,9 @@ const DashboardLayout = () => {
                         <NavLink to={"serve-meals"}>Serve Meals</NavLink>
                       </li>
                       <li>
-                        <NavLink to={"upcoming-meals"}>Upcoming Meals</NavLink>
+                        <NavLink to={"all-upcoming-meals"}>
+                          All Upcoming Meals
+                        </NavLink>
                       </li>
                     </>
                   ) : (

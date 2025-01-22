@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Container from "../../../shared/Container/Container";
+
 import MealCards from "../../../components/MealCards/MealCards";
 import useAxiosPublice from "../../../Hooks/useAxiosPublice";
 
 function Meals() {
-  // const [meals] = useMeal();
   const axiosPublice = useAxiosPublice();
   const [meals, setMeals] = useState([]);
   const [search, setSearch] = useState("");

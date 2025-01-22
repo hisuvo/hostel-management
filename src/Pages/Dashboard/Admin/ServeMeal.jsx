@@ -47,13 +47,11 @@ function ServeMeal() {
         setFilterRequests(res.data);
       })
       .catch((error) => {
-        console.log("Search error --->", error.message);
+        Swal.fire("Search error --->", error.message);
       });
   };
 
   const displayedRequest = searchQuery ? filterRequests : requests;
-
-  console.log("display request is --->", displayedRequest);
 
   return (
     <div className="p-6">

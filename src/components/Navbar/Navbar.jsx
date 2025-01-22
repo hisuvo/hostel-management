@@ -115,7 +115,6 @@ function Navbar() {
                       isAdmin ? "admin-profile" : "user-profile"
                     }`}
                   >
-                    {" "}
                     Dashboard
                   </Link>
                 </li>

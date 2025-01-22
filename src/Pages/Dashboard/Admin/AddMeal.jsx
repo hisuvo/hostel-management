@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublice from "../../../Hooks/useAxiosPublice";
@@ -7,11 +7,13 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import SectionTitle from "../../../shared/SectionTitle";
+import DatePicker from "react-datepicker";
 
 const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
 
 const AddMealForm = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublice();
   const { user } = useContext(AuthContext);
@@ -45,7 +47,7 @@ const AddMealForm = () => {
         ingredients: data.ingredients.split(","),
         description: data.description,
         price: parseFloat(data.price),
-        postTime: new Date(data.postTime).toISOString(),
+        postTime: selectedDate,
         distributorName: adminName,
         distributorEmail: adminEmail,
         rating: 0,
@@ -158,14 +160,15 @@ const AddMealForm = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="mb-4 flex-grow">
               <label className="block font-medium mb-1">Post Time</label>
-              <input
-                type="datetime-local"
-                {...register("postTime", { required: "Post time is required" })}
-                className="input input-bordered w-full"
-              />
-              {errors.postTime && (
-                <p className="text-red-500">{errors.postTime.message}</p>
-              )}
+              <div className="grid col-span-12">
+                <DatePicker
+                  selected={selectedDate}
+                  showTimeSelect
+                  dateFormat="Pp"
+                  onChange={(data) => setSelectedDate(data)}
+                  className="w-full p-4 border rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-gray-600 dark:border-gray-300"
+                />
+              </div>
             </div>
 
             <div className="mb-4 gap-4">

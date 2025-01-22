@@ -6,7 +6,6 @@ import Container from "../../shared/Container/Container";
 
 const CurremtReview = () => {
   const [reviews] = useReview();
-  console.log("review number is a", reviews);
 
   return (
     <Container>

@@ -36,7 +36,7 @@
 10.Data Analytics for Admins
 11.Two-Role Support (Admin and user)
 
-# Uses NPM Package here
+## Uses NPM Package here
 
 - react-tabs
 - react-rating
@@ -47,8 +47,7 @@
 - react-stripe-js
 - react-infinite-scroll-component
 - react-fast-marquee
-
-NOTE: user for use image url https://i.pravatar.cc/300
+- react-datepicker
 
 <!-- Done Page  -->
 
@@ -57,7 +56,7 @@ NOTE: user for use image url https://i.pravatar.cc/300
 - Navbar
 - Banner Section
 - Meals by Category
-  <!-- - Additional 1 Sections -->
+  - Additional 1 Sections
   - Additional 2 Sections
   - Footer Section
 

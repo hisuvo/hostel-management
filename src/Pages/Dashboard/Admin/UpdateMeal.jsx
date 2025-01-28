@@ -58,7 +58,7 @@ const UpdateMeal = () => {
 
       //  post mealItem in server
       await axiosSecure.patch(`/meals/${id}`, mealData).then((res) => {
-        if (res.data.acknowledged) {
+        if (res.data.insertedId) {
           // show a success popup
           Swal.fire({
             title: "Recipe menu updated successfull",

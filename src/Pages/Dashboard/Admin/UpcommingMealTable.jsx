@@ -70,10 +70,16 @@ const UpcomingMealTable = () => {
                   <td className="py-3 px-4">{meal?.title}</td>
                   <td className="py-3 px-4">{meal?.likes}</td>
                   <td className="py-3 px-4">
-                    <PrimayBtn
-                      onClick={() => onPublish(`${meal?._id}`)}
-                      title={"Publish"}
-                    ></PrimayBtn>
+                    {meal?.likes > 9 ? (
+                      <PrimayBtn
+                        onClick={() => onPublish(`${meal?._id}`)}
+                        title={"Publish"}
+                      ></PrimayBtn>
+                    ) : (
+                      <button className="btn border border-blue-300">
+                        Publish
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))

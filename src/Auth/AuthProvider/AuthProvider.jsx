@@ -57,7 +57,6 @@ function AuthProvider({ children }) {
   // observer function
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
       if (currentUser) {
         const userInfo = { email: currentUser.email };
         // get token form server
@@ -65,12 +64,15 @@ function AuthProvider({ children }) {
           // set token in local stroge
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+            setUser(currentUser);
             setLoading(false);
           }
         });
       } else {
         // remove token from localStroge
         localStorage.removeItem("access-token");
+        setUser(currentUser);
+
         setLoading(false);
       }
     });

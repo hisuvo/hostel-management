@@ -9,6 +9,7 @@ const useAdmin = () => {
 
   const { data: isAdmin, isPending: adminLoading } = useQuery({
     queryKey: [user?.email, "isAdmin"],
+    enabled: !!user?.email,
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/admin/${user.email}`);
       return res.data?.admin;
@@ -19,11 +20,3 @@ const useAdmin = () => {
 };
 
 export default useAdmin;
-
-const x = {
-  _id: "6789c139a438e4f4a3e7501a",
-  name: "suvo datta",
-  email: "dattasuvo7@gmail.com",
-  img: "https://lh3.googleusercontent.com/a/ACg8ocKuAxKtK-_zVuAd-SePGpydIGmqg9…",
-  badge: "bronze",
-};

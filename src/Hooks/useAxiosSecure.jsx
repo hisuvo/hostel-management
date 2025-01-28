@@ -25,20 +25,20 @@ function useAxiosSecure() {
     }
   );
 
-  // Add a response interceptor for 401 and 403 status
-  axiosSecure.interceptors.response.use(
-    function (response) {
-      return response;
-    },
-    async (error) => {
-      const status = error?.request?.status;
-      if (status === 401) {
-        await logOut();
-        navigate("/login");
-      }
-      return Promise.reject(error);
-    }
-  );
+  // Add a response interceptor for 401
+  // axiosSecure.interceptors.response.use(
+  //   function (response) {
+  //     return response;
+  //   },
+  //   async (error) => {
+  //     const status = error?.request?.status;
+  //     if (status === 401) {
+  //       await logOut();
+  //       navigate("/login");
+  //     }
+  //     return Promise.reject(error);
+  //   }
+  // );
   return axiosSecure;
 }
 

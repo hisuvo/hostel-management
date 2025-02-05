@@ -11,6 +11,7 @@ The Hostel Management website is a digital platform designed to streamline hoste
 ## Frontend:
 - HTML, CSS, and JavaScript
 - React.js (for building dynamic, responsive user interfaces)
+- React-router-dom
 - TailwindCSS (for styling and creating responsive layouts)
   
 ## Backend:
@@ -26,7 +27,6 @@ The Hostel Management website is a digital platform designed to streamline hoste
 - Hosting & Deployment: Firebase or Vercel 
 
 ## Prerequisites:
-
 Make sure you have the following installed on your system:
 - Node.js (with npm)
 - MongoDB (if running locally or you can use MongoDB Atlas)
@@ -36,17 +36,15 @@ Make sure you have the following installed on your system:
 1. Clone the Repository:
    - Clone the project repository from GitHub
      
-             https://github.com/hisuvo/food-sharing-client.git
+             git clone https://github.com/hisuvo/hostel-management.git
+             git clone https://github.com/hisuvo/hostel-management-server.git
      
 2. Navigate to Project Folder:
    - Move into the project directory
      
-            cd food-sharing
+            cd hostel-management
 
 3. Install Frontend Dependencies:
-   - Move into the project directory
-     
-            food-sharing-client
 
    - Install the required dependencies:
  
@@ -55,11 +53,12 @@ Make sure you have the following installed on your system:
 4. Install Backend Dependencies:
    - Navigate to the backend folder
      
-            food-sharing-server
+            cd hostel-management-server
 
    - Install the required dependencies:
  
           npm install
+     
 5. Setup Environment Variables:
    - Create a .env file in the backend folder to store sensitive information like your MongoDB URI and Stripe
    - Example .env file:
@@ -72,30 +71,8 @@ Make sure you have the following installed on your system:
     running MongoDB:
  
           mongod
-   
-8. Run the Backend Server:
-   - Navigate to the backend folder:
-     
-            cd backend
 
-   - Install the required dependencies:
  
-          npm start
-  - This should start your backend server on a port like http://localhost:5000.
-
-8. Run the Frontend:
- - Navigate to the frontend folder (if not already there):
-   
-        cd ../frontend
-   
- - Start the frontend development server:
-
-        npm start
-   
- - This will run the frontend on a port like http://localhost:3000.
- 
-9. Access the Website:
--  Open your browser and visit http://localhost:3000 to see the website running locally.
    
 ## live project links :
  - https://food-share-surplus-reduction.web.app/

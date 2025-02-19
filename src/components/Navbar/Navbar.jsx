@@ -51,7 +51,7 @@ function Navbar() {
       });
   };
   return (
-    <div className="backdrop-blur-sm bg-white text-gray-950 dark:bg-gray-900 dark:text-white py-2 ">
+    <div className="backdrop-blur-sm bg-white shadow-lg dark:shadow-blue-900/10 text-gray-950 dark:bg-gray-900 dark:text-white py-2 ">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -102,9 +102,9 @@ function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                className="dropdown-content menu bg-gray-950 text-gray-50 rounded-box z-[1] w-52 p-2 shadow"
               >
-                <li className="disabled active:bg-white border-b-2">
+                <li className="disabled border-b-2">
                   <button className="btn bg-transparent hover:bg-transparent shadow-none border-none text-lg font-semibold disabled">
                     {user?.displayName}
                   </button>

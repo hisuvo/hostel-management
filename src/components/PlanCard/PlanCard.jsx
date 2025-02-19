@@ -2,12 +2,20 @@ import { FaDiamondTurnRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 function PlanCard({ plan }) {
   return (
-    <div>
+    <div className="text-gray-950 dark:text-gray-50">
       <div
         className={`card 
-          ${plan.name === "Silver Plan" ? "bg-gray-300 " : ""}
-          ${plan.name === "Gold Plan" ? "bg-yellow-300 " : ""}
-          ${plan.name === "Platinum Plan" ? "bg-sky-300 " : ""}
+          ${
+            plan.name === "Silver Plan" ? "bg-gray-300 dark:bg-gray-300/10" : ""
+          }
+          ${
+            plan.name === "Gold Plan"
+              ? "bg-yellow-300 dark:bg-yellow-300/10"
+              : ""
+          }
+          ${
+            plan.name === "Platinum Plan" ? "bg-sky-300 dark:bg-sky-300/10" : ""
+          }
             shadow-lg p-6 rounded-lg`}
       >
         <h3 className="text-2xl font-bold text-center mb-4">{plan.name}</h3>

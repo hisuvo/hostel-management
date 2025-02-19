@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import MealCards from "../../../components/MealCards/MealCards";
 import useAxiosPublice from "../../../Hooks/useAxiosPublice";
+import Lodder2 from "../../../components/Lodder/Lodder2";
 
 function Meals() {
   const axiosPublice = useAxiosPublice();
@@ -27,8 +28,10 @@ function Meals() {
   return (
     <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4 mb-14">
       {/* search meal section */}
-      <div className="p-6 bg-blue-200 rounded-lg mb-6">
-        <h1 className="text-2xl font-bold  mb-4">Search Meals</h1>
+      <div className="p-6 bg-blue-200 dark:bg-blue-950 rounded-lg my-6">
+        <h1 className="text-2xl font-bold text-gray-950 dark:text-gray-50 mb-4">
+          Search Meals
+        </h1>
         <form className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Search Input */}
           <div>
@@ -80,13 +83,7 @@ function Meals() {
       </div>
 
       {/* Meal cards display */}
-      {meals.length > 0 ? (
-        <MealCards items={meals} />
-      ) : (
-        <div>
-          <p className="text-4xl text-blue-900 text-center">No meals found</p>
-        </div>
-      )}
+      {meals.length > 0 ? <MealCards items={meals} /> : <Lodder2 />}
     </div>
   );
 }

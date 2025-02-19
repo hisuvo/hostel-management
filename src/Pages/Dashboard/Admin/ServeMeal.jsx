@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useRequest from "../../../Hooks/useRequest";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import Swal from "sweetalert2";
+import Lodder2 from "../../../components/Lodder/Lodder2";
 
 function ServeMeal() {
   const axiosSecure = useAxiosSecure();
@@ -57,7 +58,7 @@ function ServeMeal() {
       </h2>
 
       {/* Search Bar */}
-      <div className="bg-blue-100 p-4 rounded-md">
+      <div className="p-6 bg-blue-950 rounded-md">
         <div className="form-control  max-w-md ">
           <div className="input-group flex gap-2 ">
             <input
@@ -86,33 +87,39 @@ function ServeMeal() {
             </tr>
           </thead>
           {/* Table Body */}
-          <tbody>
-            {displayedRequest.map((request, index) => (
-              <tr key={request._id}>
-                <td>{++index}</td>
-                <td>{request?.title}</td>
-                <td>{request?.userName || "anonymous"}</td>
-                <td>{request?.requestEmail}</td>
-                <td>
-                  <span
-                    className={`badge ${
-                      request?.status === "delivered"
-                        ? "badge-success text-white"
-                        : "badge-secondary"
-                    } `}
-                  >
-                    {request?.status}
-                  </span>
-                </td>
-                <td>
-                  <PrimayBtn
-                    onClick={() => handleServe(request._id)}
-                    title={"serve"}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          {displayedRequest.length > 0 ? (
+            <tbody>
+              {displayedRequest.map((request, index) => (
+                <tr key={request._id}>
+                  <td>{++index}</td>
+                  <td>{request?.title}</td>
+                  <td>{request?.userName || "anonymous"}</td>
+                  <td>{request?.requestEmail}</td>
+                  <td>
+                    <span
+                      className={`badge ${
+                        request?.status === "delivered"
+                          ? "badge-success text-white"
+                          : "badge-secondary"
+                      } `}
+                    >
+                      {request?.status}
+                    </span>
+                  </td>
+                  <td>
+                    <PrimayBtn
+                      onClick={() => handleServe(request._id)}
+                      title={"serve"}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ) : (
+            <tbody>
+              <Lodder2 />
+            </tbody>
+          )}
         </table>
       </div>
     </div>

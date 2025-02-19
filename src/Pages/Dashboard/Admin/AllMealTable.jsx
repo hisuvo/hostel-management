@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
+import Lodder2 from "../../../components/Lodder/Lodder2";
 
 const AllMealTable = () => {
   const axiosSecure = useAxiosSecure();
@@ -60,7 +61,7 @@ const AllMealTable = () => {
       <h2 className="text-2xl font-bold mb-4">All Meals</h2>
 
       {/* Search and Sort Controls */}
-      <div className="p-4 bg-blue-200 rounded-md">
+      <div className=" p-6 bg-blue-950 rounded-md">
         {/* Sort Buttons */}
         <div className="flex justify-start items-center gap-4">
           <label className="text-xl font-semibold">Sort By:</label>
@@ -102,34 +103,41 @@ const AllMealTable = () => {
           </thead>
 
           {/* Table Body */}
-          <tbody>
-            {meals.map((meal, index) => (
-              <tr key={meal?._id}>
-                <td>{++index}</td>
-                <td>{meal?.title}</td>
-                <td>{meal?.likes}</td>
-                <td>{meal?.reviews_count}</td>
-                <td>{meal?.rating}</td>
 
-                <td>{meal?.distributorName}</td>
+          {meals.length > 0 ? (
+            <tbody>
+              {meals.map((meal, index) => (
+                <tr key={meal?._id}>
+                  <td>{++index}</td>
+                  <td>{meal?.title}</td>
+                  <td>{meal?.likes}</td>
+                  <td>{meal?.reviews_count}</td>
+                  <td>{meal?.rating}</td>
 
-                <td className="flex gap-2">
-                  <Link to={`/meal-details/${meal?._id}`}>
-                    <PrimayBtn title={"view"} />
-                  </Link>
+                  <td>{meal?.distributorName}</td>
 
-                  <Link to={`/dashboard/update-meal/${meal?._id}`}>
-                    <PrimayBtn title={"Update"} />
-                  </Link>
+                  <td className="flex gap-2">
+                    <Link to={`/meal-details/${meal?._id}`}>
+                      <PrimayBtn title={"view"} />
+                    </Link>
 
-                  <PrimayBtn
-                    onClick={() => handleDelete(meal?._id)}
-                    title={"Delete"}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
+                    <Link to={`/dashboard/update-meal/${meal?._id}`}>
+                      <PrimayBtn title={"Update"} />
+                    </Link>
+
+                    <PrimayBtn
+                      onClick={() => handleDelete(meal?._id)}
+                      title={"Delete"}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ) : (
+            <tbody>
+              <Lodder2 />
+            </tbody>
+          )}
         </table>
       </div>
     </div>

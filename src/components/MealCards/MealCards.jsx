@@ -8,7 +8,7 @@ function MealCards({ items }) {
 
   return (
     <>
-      <h2 className="text-xl mb-2 bg-blue-100 p-2">
+      <h2 className="text-xl mb-2 text-gray-950 bg-blue-100 dark:bg-blue-950 dark:text-gray-50 p-2">
         Total Meals: {items.length}
       </h2>
 

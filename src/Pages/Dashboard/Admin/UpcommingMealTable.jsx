@@ -45,7 +45,7 @@ const UpcomingMealTable = () => {
   return (
     <Container>
       {/* Search Bar */}
-      <div className="bg-blue-100 p-4 rounded-md mb-4 ">
+      <div className="p-6 bg-blue-950 rounded-md mb-4 ">
         {/* <PrimayBtn title={"Sort By Like"} /> */}
         <PrimayBtn
           onClick={handleSortByLikes}
@@ -87,7 +87,7 @@ const UpcomingMealTable = () => {
               <tr>
                 <td
                   colSpan="3"
-                  className="py-4 px-4 text-center text-gray-500 italic"
+                  className="py-4 px-4 text-2xl text-center text-gray-950 dark:text-gray-50 italic"
                 >
                   No upcoming meals found.
                 </td>

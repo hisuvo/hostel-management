@@ -72,7 +72,7 @@ const UpdateMeal = () => {
   return (
     <div>
       <SectionTitle heading={"Add Meal Details"} />
-      <div className="max-w-2xl mx-auto mb-16 bg-white border-2 border-blue-400 rounded-md">
+      <div className="max-w-2xl mx-auto mb-16 bg-blue-950/30 border-2 border-blue-400 rounded-md">
         <form onSubmit={handleSubmit(onSubmit)} className="p-8">
           {/* Title & Category */}
           <div className="grid md:grid-cols-2 gap-4">
@@ -177,7 +177,7 @@ const UpdateMeal = () => {
                 type="text"
                 defaultValue={adminName}
                 readOnly
-                className="input input-bordered w-full bg-gray-200"
+                className="input input-bordered w-full"
               />
             </div>
             <div className="mb-4">
@@ -188,7 +188,7 @@ const UpdateMeal = () => {
                 type="email"
                 defaultValue={adminEmail}
                 readOnly
-                className="input input-bordered w-full bg-gray-200"
+                className="input input-bordered w-full"
               />
             </div>
           </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import Lodder2 from "../../../components/Lodder/Lodder2";
 
 const ManageUser = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -58,7 +59,7 @@ const ManageUser = () => {
       <h2 className="text-2xl font-bold mb-4">All Users {users.length}</h2>
 
       {/* Search Bar */}
-      <div className="bg-blue-100 p-4 rounded-md">
+      <div className="bg-blue-950/30 p-4 rounded-md">
         <div className="form-control  max-w-md">
           <div className="input-group flex gap-2">
             <input
@@ -93,41 +94,49 @@ const ManageUser = () => {
 
           {/* Table Body */}
           <tbody>
-            {users.map((user, index) => (
-              <tr key={user._id}>
-                <td>{++index}</td>
-                <td className="uppercase">{user.name}</td>
-                <td>{user.email}</td>
-                <td>
-                  <span
-                    className={`badge ${
-                      user.badge === "silver plan" ? "bg-gray-300" : ""
-                    } 
+            {users.length > 0 ? (
+              <>
+                {users.map((user, index) => (
+                  <tr key={user._id}>
+                    <td>{++index}</td>
+                    <td className="uppercase">{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>
+                      <span
+                        className={`badge ${
+                          user.badge === "silver plan" ? "bg-gray-300" : ""
+                        } 
                     ${user.badge === "golden plan" ? "bg-yellow-400" : ""}
                     ${user.badge === "platinum plan" ? "bg-blue-400" : ""}
                     `}
-                  >
-                    {user.badge}
-                  </span>
-                </td>
-                <td>
-                  {/*if user role is admin then 
+                      >
+                        {user.badge}
+                      </span>
+                    </td>
+                    <td>
+                      {/*if user role is admin then 
                     show admin other wise show make admine button */}
-                  {user.role === "admin" ? (
-                    <span className="badge badge-success text-white">
-                      Admin
-                    </span>
-                  ) : (
-                    <button
-                      onClick={() => handleMakeAdmine(user)}
-                      className="btn btn-primary btn-xs"
-                    >
-                      Make Admin
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
+                      {user.role === "admin" ? (
+                        <span className="badge badge-success text-white">
+                          Admin
+                        </span>
+                      ) : (
+                        <button
+                          onClick={() => handleMakeAdmine(user)}
+                          className="btn btn-primary btn-xs"
+                        >
+                          Make Admin
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ) : (
+              <div className="flex justify-center items-center">
+                <Lodder2 />
+              </div>
+            )}
           </tbody>
         </table>
       </div>

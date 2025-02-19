@@ -4,6 +4,7 @@ import { AuthContext } from "../../Auth/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import useAdmin from "../../Hooks/useAdmin";
 import PrimayBtn from "../../shared/Buttons/PrimayBtn";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 function Navbar() {
   const { user, logOut } = useContext(AuthContext);
@@ -50,7 +51,7 @@ function Navbar() {
       });
   };
   return (
-    <div className="backdrop-blur-sm bg-white py-2 ">
+    <div className="backdrop-blur-sm bg-white text-gray-950 dark:bg-gray-900 dark:text-white py-2 ">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -85,6 +86,7 @@ function Navbar() {
         </div>
 
         <div className="navbar-end">
+          <ThemeToggle />
           {!user ? (
             <Link to={"/login"}>
               <PrimayBtn title={"Join Us"} />
@@ -102,7 +104,7 @@ function Navbar() {
                 tabIndex={0}
                 className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
               >
-                <li className="disabled  active:bg-white border-b-2">
+                <li className="disabled active:bg-white border-b-2">
                   <button className="btn bg-transparent hover:bg-transparent shadow-none border-none text-lg font-semibold disabled">
                     {user?.displayName}
                   </button>

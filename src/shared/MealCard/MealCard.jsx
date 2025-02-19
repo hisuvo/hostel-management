@@ -3,7 +3,7 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
 function MealCard({ meal }) {
-  const { _id, title, image, rating, price } = meal;
+  const { _id, title, image, rating, price, description } = meal;
 
   return (
     <div className="w-full  flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -17,6 +17,7 @@ function MealCard({ meal }) {
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {title}
         </h5>
+        <p>{description.slice(0, 55)}....</p>
         <div className="flex items-center mt-2.5 mb-5">
           <div>
             <Rating style={{ maxWidth: 120 }} value={rating} />

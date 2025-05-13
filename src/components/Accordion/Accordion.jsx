@@ -35,7 +35,7 @@ const Accordion = () => {
   return (
     <Container>
       <SectionTitle heading={"FAGS"} />
-      <div className="space-y-4 ">
+      <div className="space-y-4">
         {hostelFAQs.map((hostelFAQ, index) => (
           <div
             key={index}

@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthProvider/AuthProvider";
 const axiosSecure = axios.create({
-  // baseURL: "https://hostel-management-server-weld.vercel.app",
-  baseURL: "http://localhost:7000/",
+  baseURL: "https://hostel-management-server-weld.vercel.app",
+  // baseURL: "http://localhost:7000/",
 });
 
 function useAxiosSecure() {

@@ -6,7 +6,7 @@ const DashboardLayout = () => {
   const [isAdmin] = useAdmin();
 
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         {/* drawer content section */}

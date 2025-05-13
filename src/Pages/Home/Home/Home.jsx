@@ -6,6 +6,7 @@ import CurremtReview from "../../../components/CurremtReview/CurremtReview";
 import NewsMeal from "../../../components/NewsMeal/NewsMeal";
 import Newsletter from "../../../components/NewsLetter/NewsLetter";
 import UpcomingMeals from "../../UpcomingMeals/UpcomingMeals/UpcomingMeals";
+import Accordion from "../../../components/Accordion/Accordion";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
       <CurremtReview />
       <UpcomingMeals />
       <Newsletter />
+      <Accordion />
     </div>
   );
 }

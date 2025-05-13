@@ -1,4 +1,5 @@
 import React from "react";
+import PrimayBtn from "../../shared/Buttons/PrimayBtn";
 
 const Newsletter = () => {
   return (
@@ -25,7 +26,7 @@ const Newsletter = () => {
           placeholder="Enter your email"
           className="input input-bordered w-full dark:input-bordered dark:bg-gray-900 dark:text-white"
         />
-        <button className="btn btn-primary">Subscribe</button>
+        <PrimayBtn title={"Subscribe"} />
       </div>
     </div>
   );

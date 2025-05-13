@@ -37,7 +37,7 @@ const Stats = () => {
             </div>
             <div className="flex flex-col justify-center align-middle">
               <p className="text-3xl font-semibold leading-none">
-                {stats.users}
+                {stats?.users}
               </p>
               <p className="capitalize">User Number</p>
             </div>
@@ -61,7 +61,7 @@ const Stats = () => {
             </div>
             <div className="flex flex-col justify-center align-middle">
               <p className="text-3xl font-semibold leading-none">
-                {stats.meals}
+                {stats?.meals}
               </p>
               <p className="capitalize">Total Meals</p>
             </div>
@@ -82,7 +82,7 @@ const Stats = () => {
             </div>
             <div className="flex flex-col justify-center align-middle">
               <p className="text-3xl font-semibold leading-none">
-                {stats.requests}
+                {stats?.requests}
               </p>
               <p className="capitalize">Meals request</p>
             </div>
@@ -101,7 +101,7 @@ const Stats = () => {
             </div>
             <div className="flex flex-col justify-center align-middle">
               <p className="text-3xl font-semibold leading-none">
-                {stats.reviews}
+                {stats?.reviews}
               </p>
               <p className="capitalize">User Reviews</p>
             </div>

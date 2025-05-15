@@ -5,6 +5,11 @@ import useAdmin from "../Hooks/useAdmin";
 const DashboardLayout = () => {
   const [isAdmin] = useAdmin();
 
+  const handleDrawerClose = () => {
+    const drawerCheckbox = document.getElementById("my-drawer-2");
+    if (drawerCheckbox) drawerCheckbox.checked = false;
+  };
+
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="drawer lg:drawer-open">
@@ -49,29 +54,49 @@ const DashboardLayout = () => {
                     <>
                       {/* Admin content here */}
                       <li>
-                        <NavLink to={"/dashboard/admin-profile"}>
+                        <NavLink
+                          to={"/dashboard/admin-profile"}
+                          onClick={handleDrawerClose}
+                        >
                           Admin Home
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"manage-users"}>
+                        <NavLink
+                          to={"manage-users"}
+                          onClick={handleDrawerClose}
+                        >
                           All Users (manage)
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"add-meal"}>Add Meal</NavLink>
+                        <NavLink to={"add-meal"} onClick={handleDrawerClose}>
+                          Add Meal
+                        </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"all-meal-table"}>all Meals</NavLink>
+                        <NavLink
+                          to={"all-meal-table"}
+                          onClick={handleDrawerClose}
+                        >
+                          all Meals
+                        </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"all-review"}>All Reviews</NavLink>
+                        <NavLink to={"all-review"} onClick={handleDrawerClose}>
+                          All Reviews
+                        </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"serve-meals"}>Serve Meals</NavLink>
+                        <NavLink to={"serve-meals"} onClick={handleDrawerClose}>
+                          Serve Meals
+                        </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"all-upcoming-meals"}>
+                        <NavLink
+                          to={"all-upcoming-meals"}
+                          onClick={handleDrawerClose}
+                        >
                           All Upcoming Meals
                         </NavLink>
                       </li>
@@ -80,18 +105,31 @@ const DashboardLayout = () => {
                     <>
                       {/* User content here */}
                       <li>
-                        <NavLink to={"user-profile"}>My Profile</NavLink>
+                        <NavLink
+                          to={"user-profile"}
+                          onClick={handleDrawerClose}
+                        >
+                          My Profile
+                        </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"requested-meals"}>
+                        <NavLink
+                          to={"requested-meals"}
+                          onClick={handleDrawerClose}
+                        >
                           Requested Meals
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"user-review"}>My Reviews</NavLink>
+                        <NavLink to={"user-review"} onClick={handleDrawerClose}>
+                          My Reviews
+                        </NavLink>
                       </li>
                       <li>
-                        <NavLink to={"user-payment-history"}>
+                        <NavLink
+                          to={"user-payment-history"}
+                          onClick={handleDrawerClose}
+                        >
                           Payment History
                         </NavLink>
                       </li>
@@ -101,13 +139,19 @@ const DashboardLayout = () => {
                 <div className="divider"></div>
                 <ul>
                   <li>
-                    <NavLink to={"/"}>Home</NavLink>
+                    <NavLink to={"/"} onClick={handleDrawerClose}>
+                      Home
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to={"/meals"}>Meals</NavLink>
+                    <NavLink to={"/meals"} onClick={handleDrawerClose}>
+                      Meals
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to={"/upcoming-meals"}>Upcomming Meals</NavLink>
+                    <NavLink to={"/upcoming-meals"} onClick={handleDrawerClose}>
+                      Upcomming Meals
+                    </NavLink>
                   </li>
                 </ul>
               </div>
@@ -117,7 +161,9 @@ const DashboardLayout = () => {
             <div className="menu">
               <ul>
                 <li>
-                  <NavLink to={"about-me"}>About Me</NavLink>
+                  <NavLink to={"about-me"} onClick={handleDrawerClose}>
+                    About Me
+                  </NavLink>
                 </li>
               </ul>
             </div>

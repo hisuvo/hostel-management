@@ -64,30 +64,34 @@ const AllMealTable = () => {
       {/* Search and Sort Controls */}
       <div className="bg-blue-50 dark:bg-gray-800 p-6 rounded-md">
         {/* Sort Buttons */}
-        <div className="flex justify-start items-center gap-4">
-          <label className="text-xl text-gray-900 dark:text-gray-50 font-semibold">
-            Sort By:
-          </label>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="p-2 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
-          >
-            <option value="likes">Likes</option>
-            <option value="reviews_count">Reviews Count</option>
-          </select>
+        <div className="flex flex-col md:flex-row justify-start gap-4">
+          <div className="flex flex-col md:flex-row  justify-start items-center gap-4">
+            <label className="text-xl text-gray-900 dark:text-gray-50 font-semibold">
+              Sort By:
+            </label>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="p-2 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
+            >
+              <option value="likes">Likes</option>
+              <option value="reviews_count">Reviews Count</option>
+            </select>
+          </div>
 
-          <label className="text-xl text-gray-900 dark:text-gray-50 font-semibold">
-            Order:
-          </label>
-          <select
-            value={order}
-            onChange={(e) => setOrder(e.target.value)}
-            className="p-2 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
-          >
-            <option value="desc">Descending</option>
-            <option value="asc">Ascending</option>
-          </select>
+          <div className="flex flex-col md:flex-row  justify-start items-center gap-4">
+            <label className="text-xl text-gray-900 dark:text-gray-50 font-semibold">
+              Order:
+            </label>
+            <select
+              value={order}
+              onChange={(e) => setOrder(e.target.value)}
+              className="p-2 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
+            >
+              <option value="desc">Descending</option>
+              <option value="asc">Ascending</option>
+            </select>
+          </div>
         </div>
       </div>
 

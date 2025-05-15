@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import Lodder2 from "../../../components/Lodder/Lodder2";
+import SectionTitle from "../../../shared/SectionTitle";
 
 const AllMealTable = () => {
   const axiosSecure = useAxiosSecure();
@@ -58,27 +59,31 @@ const AllMealTable = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">All Meals</h2>
+      <SectionTitle heading={"All Meals"} />
 
       {/* Search and Sort Controls */}
-      <div className=" p-6 bg-blue-950 rounded-md">
+      <div className="bg-blue-50 dark:bg-gray-800 p-6 rounded-md">
         {/* Sort Buttons */}
         <div className="flex justify-start items-center gap-4">
-          <label className="text-xl font-semibold">Sort By:</label>
+          <label className="text-xl text-gray-900 dark:text-gray-50 font-semibold">
+            Sort By:
+          </label>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="p-2 px-2 rounded-md outline-blue-500"
+            className="p-2 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
           >
             <option value="likes">Likes</option>
             <option value="reviews_count">Reviews Count</option>
           </select>
 
-          <label className="text-xl font-semibold">Order:</label>
+          <label className="text-xl text-gray-900 dark:text-gray-50 font-semibold">
+            Order:
+          </label>
           <select
             value={order}
             onChange={(e) => setOrder(e.target.value)}
-            className="p-2 px-2 rounded-md outline-blue-500"
+            className="p-2 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
           >
             <option value="desc">Descending</option>
             <option value="asc">Ascending</option>
@@ -88,9 +93,9 @@ const AllMealTable = () => {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           {/* Table Header */}
-          <thead>
+          <thead className="text-gray-900 text-xl dark:text-gray-50">
             <tr>
               <th></th>
               <th>Meal Title</th>
@@ -105,7 +110,7 @@ const AllMealTable = () => {
           {/* Table Body */}
 
           {meals.length > 0 ? (
-            <tbody>
+            <tbody className="text-gray-900 dark:text-gray-50">
               {meals.map((meal, index) => (
                 <tr key={meal?._id}>
                   <td>{++index}</td>

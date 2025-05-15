@@ -19,7 +19,7 @@ function MembershipCards() {
   return (
     <div>
       {/* all card */}
-      <div className="py-10 px-4 bg-blue-100 dark:bg-gray-950/20">
+      <div className="py-10 px-4 bg-blue-50 dark:bg-gray-950/20">
         <SectionTitle heading={"Choose Your Meal Plan"} />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">

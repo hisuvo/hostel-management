@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import EditReview from "../../../components/EditReview/EditReview";
+import SectionTitle from "../../../shared/SectionTitle";
 
 const UserReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -21,13 +22,12 @@ const UserReviews = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">My Reviews</h2>
-
+      <SectionTitle heading={"My Reviews"} />
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           {/* Table Header */}
-          <thead>
+          <thead className="text-gray-900 dark:text-gray-50">
             <tr>
               <th></th>
               <th>Meal Title</th>
@@ -38,7 +38,7 @@ const UserReviews = () => {
           </thead>
 
           {/* Table Body */}
-          <tbody>
+          <tbody className="text-gray-900 dark:text-gray-50">
             {/* Example Row 3 */}
             {reviews.map((review, index) => (
               <tr key={review._id}>

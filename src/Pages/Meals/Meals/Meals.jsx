@@ -28,7 +28,7 @@ function Meals() {
   return (
     <div className="max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4 mb-14">
       {/* search meal section */}
-      <div className="p-6 bg-blue-200 dark:bg-blue-950 rounded-lg my-6">
+      <div className="p-6 bg-blue-50 dark:bg-gray-800  rounded-lg my-6">
         <h1 className="text-2xl font-bold text-gray-950 dark:text-gray-50 mb-4">
           Search Meals
         </h1>
@@ -40,7 +40,7 @@ function Meals() {
               placeholder="Search meals"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full p-3 border border-blue-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full p-3 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
             />
           </div>
 
@@ -49,7 +49,7 @@ function Meals() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full p-3 border border-blue-100 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full p-3 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
             >
               <option value="">Categories</option>
               <option value="Breakfast">Breakfast</option>
@@ -65,7 +65,7 @@ function Meals() {
               placeholder="Min Price"
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
-              className="w-full p-3 border border-blue-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full p-3 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
             />
           </div>
 
@@ -76,7 +76,7 @@ function Meals() {
               placeholder="Max Price"
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
-              className="w-full p-3 border border-blue-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full p-3 px-2 rounded-md bg-gray-50 dark:bg-gray-800 border-2 border-blue-300 outline-blue-500"
             />
           </div>
         </form>

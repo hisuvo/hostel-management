@@ -48,12 +48,12 @@ const UpcomingMeals = () => {
         {filterUpcomingMeals(meals).map((meal) => (
           <div
             key={meal?._id}
-            className="border bg-blue-50 text-gray-950 dark:text-gray-50 dark:bg-blue-950/50 flex justify-start items-center gap-4 rounded-lg p-4 shadow-md"
+            className="border bg-blue-50 text-gray-950 dark:text-gray-50 dark:bg-blue-950/50 flex flex-col md:flex-row justify-start items-center gap-4 rounded-lg p-4 shadow-md"
           >
             <div>
               <figure>
                 <img
-                  className="w-24 rounded-md object-cover border-2"
+                  className="w-36 md:w-24 rounded-md object-cover border-2"
                   src={meal?.image}
                   alt=""
                 />
@@ -65,7 +65,7 @@ const UpcomingMeals = () => {
               <p>
                 Publishing on: {new Date(meal?.postTime).toLocaleDateString()}
               </p>
-              <p className="text-xs font-mono ">{meal?.like}</p>
+              <p className="text-xs font-mono pt-4 md:pt-0">{meal?.like}</p>
               {userBadge?.badge !== "bronze" ? (
                 <PrimayBtn
                   title={"Like"}

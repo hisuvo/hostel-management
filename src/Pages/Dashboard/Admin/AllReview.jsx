@@ -3,6 +3,7 @@ import useReview from "../../../Hooks/useReview";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../shared/SectionTitle";
 
 const AllReview = () => {
   const [reviews, refetch] = useReview();
@@ -33,13 +34,13 @@ const AllReview = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">All Review</h2>
+      <SectionTitle heading={"All Review"} />
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           {/* Table Header */}
-          <thead>
+          <thead className="text-gray-900 text-xl dark:text-gray-50">
             <tr>
               <th></th>
               <th>Meal Title</th>
@@ -50,7 +51,7 @@ const AllReview = () => {
           </thead>
 
           {/* Table Body */}
-          <tbody>
+          <tbody className="text-gray-900 dark:text-gray-50">
             {reviews.map((review, index) => (
               <tr key={review._id}>
                 <td>{++index}</td>

@@ -5,6 +5,7 @@ import useAxiosPublice from "../../../Hooks/useAxiosPublice";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../shared/SectionTitle";
 
 const RequestedMeals = () => {
   const axiosPublice = useAxiosPublice();
@@ -55,15 +56,13 @@ const RequestedMeals = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">
-        Requested Meals ({requestMeals.length})
-      </h2>
+      <SectionTitle heading={`Requested Meals (${requestMeals.length})`} />
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           {/* Table Header */}
-          <thead>
+          <thead className="text-gray-900 text-xl dark:text-gray-50">
             <tr>
               <th></th>
               <th>Meal Title</th>
@@ -75,7 +74,7 @@ const RequestedMeals = () => {
           </thead>
 
           {/* Table Body */}
-          <tbody>
+          <tbody className="text-gray-900 dark:text-gray-50">
             {requestMeals.map((request, index) => (
               <tr key={request._id}>
                 <td>{++index}</td>

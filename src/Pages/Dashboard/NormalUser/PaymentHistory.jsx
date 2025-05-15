@@ -2,6 +2,7 @@ import { useContext } from "react";
 import useAxiosPublice from "../../../Hooks/useAxiosPublice";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../Auth/AuthProvider/AuthProvider";
+import SectionTitle from "../../../shared/SectionTitle";
 
 const PaymentHistory = () => {
   const axiosPublice = useAxiosPublice();
@@ -26,7 +27,7 @@ const PaymentHistory = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Payment History</h2>
+      <SectionTitle heading={"Payment History"} />
 
       {paymentHistory.length === 0 ? (
         <div className="alert alert-warning">
@@ -36,8 +37,8 @@ const PaymentHistory = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table w-full table-zebra">
-            <thead>
+          <table className="table w-full">
+            <thead className="text-gray-900 text-xl dark:text-gray-50">
               <tr>
                 <th>Payment ID</th>
                 <th>Amount</th>
@@ -45,7 +46,7 @@ const PaymentHistory = () => {
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-gray-900 dark:text-gray-50">
               {paymentHistory.map((payment) => (
                 <tr key={payment._id}>
                   <td>{payment.transctionId}</td>

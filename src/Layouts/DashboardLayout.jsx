@@ -12,7 +12,10 @@ const DashboardLayout = () => {
         {/* drawer content section */}
         <div className="drawer-content">
           {/* Page content here */}
-          <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
+          <label
+            htmlFor="my-drawer-2"
+            className="btn drawer-button bg-gray-50 dark:bg-transparent dark:text-gray-50 text-gray-900 border-none lg:hidden"
+          >
             <FaAlignLeft />
           </label>
           {/* test for text user  */}

@@ -14,8 +14,8 @@ function Home() {
       <Banner />
       <NewsMeal />
       <MealsTab />
-      <MembershipCards />
       <CurremtReview />
+      <MembershipCards />
       <UpcomingMeals />
       <Newsletter />
       <Accordion />

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PrimayBtn from "../../shared/Buttons/PrimayBtn";
 import Container from "../../shared/Container/Container";
+import SectionTitle from "../../shared/SectionTitle";
 
 const NewsMeal = () => {
   const today = new Date();
@@ -11,7 +12,11 @@ const NewsMeal = () => {
 
   return (
     <Container>
-      <div className="grid gird-cols-1 md:grid-cols-2 gap-4 my-4 md:my-0">
+      <SectionTitle
+        heading={"Next Cooking info"}
+        subHeading={"check food and test"}
+      ></SectionTitle>
+      <div className=" grid gird-cols-1 md:grid-cols-2 gap-4 my-4 md:my-0">
         <figure>
           <img
             className="w-xs object-cover rounded-xl"
@@ -19,7 +24,7 @@ const NewsMeal = () => {
             alt=""
           />
         </figure>
-        <div className="flex flex-col justify-end gap-4">
+        <div className="flex flex-col justify-end gap-4 text-gray-900 dark:text-gray-50">
           <h2 className="text-2xl font-mono font-semibold">
             What's Cooking Next?
           </h2>

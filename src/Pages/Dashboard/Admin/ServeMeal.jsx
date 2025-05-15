@@ -4,6 +4,7 @@ import useRequest from "../../../Hooks/useRequest";
 import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import Swal from "sweetalert2";
 import Lodder2 from "../../../components/Lodder/Lodder2";
+import SectionTitle from "../../../shared/SectionTitle";
 
 function ServeMeal() {
   const axiosSecure = useAxiosSecure();
@@ -53,18 +54,16 @@ function ServeMeal() {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">
-        Requested user ({requests.length})
-      </h2>
+      <SectionTitle heading={`Requested user (${requests.length})`} />
 
       {/* Search Bar */}
-      <div className="p-6 bg-blue-950 rounded-md">
+      <div className="p-6 bg-blue-50 dark:bg-gray-800  rounded-md">
         <div className="form-control  max-w-md ">
           <div className="input-group flex gap-2 ">
             <input
               type="text"
               placeholder="Search by username or email"
-              className="input input-bordered w-full"
+              className="input input-bordered border-2 border-blue-300 bg-transparent w-full"
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <PrimayBtn onClick={handleSearch} title={"Search"} />
@@ -74,9 +73,9 @@ function ServeMeal() {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           {/* Table Header */}
-          <thead>
+          <thead className="text-gray-900 text-xl dark:text-gray-50">
             <tr>
               <th></th>
               <th>Title</th>
@@ -88,7 +87,7 @@ function ServeMeal() {
           </thead>
           {/* Table Body */}
           {displayedRequest.length > 0 ? (
-            <tbody>
+            <tbody className="text-gray-900 dark:text-gray-50">
               {displayedRequest.map((request, index) => (
                 <tr key={request._id}>
                   <td>{++index}</td>

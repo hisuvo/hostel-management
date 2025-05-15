@@ -89,16 +89,18 @@ const AddMealForm = () => {
   return (
     <div>
       <SectionTitle heading={"Add Meal Details"} />
-      <div className="max-w-2xl mx-auto mb-16 bg-blue-950/30 border-2 border-blue-400 rounded-md">
+      <div className="max-w-4xl mx-auto mb-16 bg-blue-50 dark:bg-gray-800 rounded-md">
         <form onSubmit={handleSubmit(onSubmit)} className="p-8">
           {/* Title & Category */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="mb-4">
-              <label className="block font-medium mb-1">Meal Title</label>
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+                Meal Title
+              </label>
               <input
                 type="text"
                 {...register("title", { required: "Title is required" })}
-                className="input input-bordered w-full"
+                className="input bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 input-bordered w-full"
                 placeholder="Enter meal title"
               />
               {errors.title && (
@@ -107,10 +109,12 @@ const AddMealForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block font-medium mb-1">Category</label>
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+                Category
+              </label>
               <select
                 {...register("category", { required: "Category is required" })}
-                className="input input-bordered w-full"
+                className="input bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 input-bordered w-full"
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -129,11 +133,13 @@ const AddMealForm = () => {
           {/* Image & Ingredients */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="mb-4 ">
-              <label className="block font-medium mb-1">Meal Image</label>
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+                Meal Image
+              </label>
               <input
                 type="file"
                 {...register("image", { required: "Image is required" })}
-                className="file-input file-input-bordered w-full"
+                className="file-input bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 file-input-bordered w-full"
               />
               {errors.image && (
                 <p className="text-red-500">{errors.image.message}</p>
@@ -141,13 +147,15 @@ const AddMealForm = () => {
             </div>
 
             <div className="mb-4 ">
-              <label className="block font-medium mb-1">Ingredients</label>
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+                Ingredients
+              </label>
               <input
                 type="text"
                 {...register("ingredients", {
                   required: "Ingredients are required",
                 })}
-                className="input input-bordered w-full"
+                className="input bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 input-bordered w-full"
                 placeholder="Comma-separated ingredients"
               />
               {errors.ingredients && (
@@ -159,25 +167,29 @@ const AddMealForm = () => {
           {/* Post Time & Price*/}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="mb-4 flex-grow">
-              <label className="block font-medium mb-1">Post Time</label>
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+                Post Time
+              </label>
               <div className="grid col-span-12">
                 <DatePicker
                   selected={selectedDate}
                   showTimeSelect
                   dateFormat="Pp"
                   onChange={(data) => setSelectedDate(data)}
-                  className="w-full p-4 border rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-gray-600 dark:border-gray-300"
+                  className="w-full p-3 bg-gray-50 dark:bg-transparent border border-blue-800 rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-gray-600 dark:border-gray-300"
                 />
               </div>
             </div>
 
             <div className="mb-4 gap-4">
-              <label className="block font-medium mb-1">Price</label>
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+                Price
+              </label>
               <input
                 type="number"
                 step="0.01"
                 {...register("price", { required: "Price is required" })}
-                className="input input-bordered w-full"
+                className="input bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 input-bordered w-full"
                 placeholder="Enter price"
               />
               {errors.price && (
@@ -188,12 +200,14 @@ const AddMealForm = () => {
 
           {/* Description */}
           <div className="mb-4 gap-4">
-            <label className="block font-medium mb-1">Description</label>
+            <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+              Description
+            </label>
             <textarea
               {...register("description", {
                 required: "Description is required",
               })}
-              className="textarea textarea-bordered w-full"
+              className="textarea bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 textarea-bordered w-full"
               placeholder="Enter meal description"
             ></textarea>
             {errors.description && (
@@ -204,23 +218,25 @@ const AddMealForm = () => {
           {/* Distributor Name & Email */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="mb-4 flex-grow">
-              <label className="block font-medium mb-1">Distributor Name</label>
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
+                Distributor Name
+              </label>
               <input
                 type="text"
                 defaultValue={adminName}
                 readOnly
-                className="input input-bordered w-full "
+                className="input bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 input-bordered w-full "
               />
             </div>
             <div className="mb-4">
-              <label className="block font-medium mb-1">
+              <label className="block text-gray-900 dark:text-gray-50 font-medium mb-1">
                 Distributor Email
               </label>
               <input
                 type="email"
                 defaultValue={adminEmail}
                 readOnly
-                className="input input-bordered w-full"
+                className="input bg-gray-50 dark:bg-transparent border border-blue-800 dark:border-gray-300 input-bordered w-full"
               />
             </div>
           </div>

@@ -5,6 +5,7 @@ import PrimayBtn from "../../../shared/Buttons/PrimayBtn";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import SectionTitle from "../../../shared/SectionTitle";
 
 const UpcomingMealTable = () => {
   const [meals, refetch] = useMeal();
@@ -44,8 +45,9 @@ const UpcomingMealTable = () => {
 
   return (
     <Container>
+      <SectionTitle heading={"All Upcomming Meals"} />
       {/* Search Bar */}
-      <div className="p-6 bg-blue-950 rounded-md mb-4 ">
+      <div className="p-6 bg-blue-50 dark:bg-gray-800 rounded-md mb-4 ">
         {/* <PrimayBtn title={"Sort By Like"} /> */}
         <PrimayBtn
           onClick={handleSortByLikes}
@@ -55,15 +57,15 @@ const UpcomingMealTable = () => {
         />
       </div>
       <div className="overflow-x-auto w-full">
-        <table className="table table-zebra w-full border rounded-lg shadow-lg">
-          <thead>
+        <table className="table w-full border rounded-lg shadow-lg">
+          <thead className="text-gray-900 text-xl dark:text-gray-50">
             <tr>
               <th className="py-3 px-4 text-left">Name</th>
               <th className="py-3 px-4 text-left">Likes</th>
               <th className="py-3 px-4 text-left">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-gray-900 dark:text-gray-50">
             {processedMeals.length > 0 ? (
               processedMeals.map((meal) => (
                 <tr key={meal._id} className="hover:bg-blue-100">

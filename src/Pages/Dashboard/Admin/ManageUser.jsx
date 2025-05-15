@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import Lodder2 from "../../../components/Lodder/Lodder2";
+import SectionTitle from "../../../shared/SectionTitle";
 
 const ManageUser = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,16 +57,16 @@ const ManageUser = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">All Users {users.length}</h2>
+      <SectionTitle heading={`All Users (${users.length})`} />
 
       {/* Search Bar */}
-      <div className="bg-blue-950/30 p-4 rounded-md">
+      <div className="bg-blue-50 dark:bg-gray-800 p-4 rounded-md">
         <div className="form-control  max-w-md">
           <div className="input-group flex gap-2">
             <input
               type="text"
               placeholder="Search by username or email"
-              className="input input-bordered w-full"
+              className="input input-bordered border-2 border-blue-300 bg-transparent w-full"
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <button
@@ -80,9 +81,9 @@ const ManageUser = () => {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           {/* Table Header */}
-          <thead>
+          <thead className="text-gray-900 text-xl dark:text-gray-50">
             <tr>
               <th>#</th>
               <th>Username</th>
@@ -93,7 +94,7 @@ const ManageUser = () => {
           </thead>
 
           {/* Table Body */}
-          <tbody>
+          <tbody className="text-gray-900 dark:text-gray-50">
             {users.length > 0 ? (
               <>
                 {users.map((user, index) => (

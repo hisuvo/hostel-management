@@ -111,34 +111,36 @@ function MealDetails() {
 
   return (
     <Container>
-      <div className="grid grid-cols-12 gap-4 p-8 bg-blue-50">
+      <div className="grid grid-cols-12 gap-4 p-8 bg-blue-50 dark:bg-gray-800">
         <figure className="col-span-full md:col-span-5 lg:col-span-4 flex justify-center items-center gap-4">
           <img className="w-full" src={meal?.image} alt={meal?.title} />
         </figure>
         <div className="col-span-full md:col-span-7 lg:col-span-8 space-y-2">
           {/* meal title */}
-          <h3 className="text-2xl font-semibold">{meal?.title}</h3>
+          <h3 className="text-2xl text-gray-900 dark:text-gray-50 font-bold">
+            {meal?.title}
+          </h3>
 
           {/* meal description */}
-          <p className="text-base">
+          <p className="text-base text-gray-900 dark:text-gray-50">
             <span className="font-semibold text-lg">Description</span>:{" "}
             {meal?.description}
           </p>
 
           {/* meal ingredinets */}
-          <p className="text-base">
+          <p className="text-base text-gray-900 dark:text-gray-50">
             <span className="font-semibold text-lg">Ingredients</span>:{" "}
             {meal?.ingredients}
           </p>
 
           {/* meal post time */}
-          <p className="text-base">
+          <p className="text-base text-gray-900 dark:text-gray-50">
             <span className="font-semibold text-lg">Post Time</span>:{" "}
             {new Date(meal?.postTime).toLocaleString()}
           </p>
 
           {/* meal destributor name */}
-          <p className="text-base">
+          <p className="text-base text-gray-900 dark:text-gray-50">
             Distributor is{" "}
             <span className="font-semibold text-lg">
               {meal?.distributorName}
@@ -149,7 +151,7 @@ function MealDetails() {
           <Rating style={{ maxWidth: 120 }} value={Math.floor(meal?.rating)} />
 
           {/* meal price  */}
-          <p className="text-xl font-semibold">
+          <p className="text-xl font-semibold text-gray-900 dark:text-gray-50">
             {" "}
             <span className="font-semibold">Price:</span> ${meal?.price}
           </p>
@@ -171,7 +173,7 @@ function MealDetails() {
 
       {/* meal review */}
       <div className="mt-4">
-        <h2 className="text-xl font-semibold">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
           Reviews ({meal?.reviews_count})
         </h2>
         <form onSubmit={handleReview} className="mt-4">
@@ -179,7 +181,7 @@ function MealDetails() {
             name="review"
             value={review}
             placeholder="Write your review here...."
-            className="rounded w-full p-2 border"
+            className="rounded bg-gray-50 dark:bg-gray-800 border border-blue-400 dark:border-gray-50 w-full p-2"
             rows={"3"}
             onChange={(e) => setReview(e.target.value)}
           ></textarea>

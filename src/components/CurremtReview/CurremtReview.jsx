@@ -20,9 +20,9 @@ const CurremtReview = () => {
                   src={review?.image}
                   alt={review?.name}
                 />
-                <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
+                <div className="space-y-0.5 font-bold text-gray-900 dark:text-white text-left rtl:text-right ms-3">
                   <div>{review?.name}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400 ">
+                  <div className="text-sm text-gray-800 dark:text-gray-400 ">
                     {review?.reviewerEmail}
                   </div>
                 </div>
